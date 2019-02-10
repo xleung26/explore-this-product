@@ -1,0 +1,85 @@
+
+/* 
+explores css
+---------------------------------------------------------> */
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+.container {
+    width: 980px;
+    height: 242px;
+    vertical-align: middle;
+}
+
+.innercontainer {
+    width: 916px;
+    height:164px;
+    display: flex;
+    flex-direction: row;
+    vertical-align: center;
+    flex-wrap: nowrap;
+    align-content: center;
+    vertical-align: middle;
+}
+
+.head1 {
+    font-weight: bold;
+}
+
+.BeautyMatch {
+    width: 20px;
+    height: 13px;
+    background-color: rgb(63, 12, 12);
+}
+
+
+.flexContainer {
+    width: 980px;
+    height: 242px;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-around; */
+    overflow-x: hidden;
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding-right: 15px;
+    vertical-align: middle;
+    flex-wrap: nowrap;
+    align-content: center;
+}
+
+.arrows {
+    display: inline-flex; 
+    flex-direction: row;
+    width: 18px;
+    height: 36px;
+    vertical-align: middle;
+    margin: auto;
+    outline: none;
+}
+
+.button {
+    display: inline-flex;
+    width: 32px;
+    height: 164px;
+    vertical-align: middle;
+    margin-top: 12px;
+    background-color: transparent;
+    border: none;
+    
+}
+
+/* 
+exploresList css
+---------------------------------------------------------> */
+
+.imgs {
+    display: flex;;
+    width: 164px;
+    height: 164px;
+    margin: 12px;
+    vertical-align: center;
+}

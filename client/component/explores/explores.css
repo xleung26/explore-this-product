@@ -8,48 +8,108 @@ explores css
     background: transparent;
 }
 
-.container {
-    width: 980px;
-    height: 242px;
-    vertical-align: middle;
+.exploreContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-.innercontainer {
-    width: 916px;
-    height:164px;
+.container {
     display: flex;
-    flex-direction: row;
-    vertical-align: center;
-    flex-wrap: nowrap;
-    align-content: center;
-    vertical-align: middle;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 980px;
+    height: 242px;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+
+.head0 {
+    width: 980px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    font-family: Georgia;
+    font-size: 24px;
+    margin: 25px;
 }
 
 .head1 {
+    width: 980px;
+    height: 13px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-self: flex-start;
+    justify-content: flex-start;
+}
+
+.looks {
     font-weight: bold;
+    font-size: 16px;
+    font-family: Helvetica;
+}
+
+.showLooks {
+    font-size: 14px;
+    font-family: Helvetica; 
+}
+
+.carouselContainer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    align-self: center;
 }
 
 .BeautyMatch {
     width: 20px;
     height: 13px;
     background-color: rgb(63, 12, 12);
+    margin-left: 10px;
 }
 
+/* 
+carousel css
+---------------------------------------------------------> */
+.innercontainer {
+    width: 980px;
+    height:198px;
+    display: flex;
+    /* flex-direction: row;
+    vertical-align: center; */
+    flex-wrap: nowrap;
+    /* align-content: center; */
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+    /* margin: auto;
+    position: relative; */
+}
 
 .flexContainer {
-    width: 980px;
-    height: 242px;
+    width: 916px;
+    height: 198px;
     display: flex;
-    flex-direction: row;
-    /* justify-content: space-around; */
+    /* flex-direction: row; */
     overflow-x: hidden;
     overflow-y: hidden;
     white-space: nowrap;
-    padding-right: 15px;
-    vertical-align: middle;
+    /* padding-right: 15px; */
+    /* vertical-align: middle; */
     flex-wrap: nowrap;
-    align-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+    /* align-content: flex-start; */
+    /* align-self: flex-start; */
+    /* margin: auto; */
+    /* position: relative; */
 }
+
+
+/* 
+arrows css
+---------------------------------------------------------> */
 
 .arrows {
     display: inline-flex; 
@@ -63,6 +123,7 @@ explores css
 
 .button {
     display: inline-flex;
+    align-self: flex-start;
     width: 32px;
     height: 164px;
     vertical-align: middle;
@@ -117,16 +178,72 @@ exploresList css
     background: rgba(0, 0, 0, 0.6);
 }
 
+.mLooks {
+    font-weight: bold;
+    font-size: 16px;
+    font-family: Helvetica;
+    line-height: 30px;
+    display: flex;
+    align-content: center;
+    float: left;
+    margin-left: 15px;
+    align-self: center;
+}
+
+.mmwrapper {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.mimage {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-self: center;
+    margin: auto;
+}
+
 .close {
     height: 29px;
     width: 29px;
     float: right;
     cursor: pointer;
+    display: flex;
+    float: right;
+    align-content: center;
+    margin-right: 15px;
+
+}
+
+/* .mimageDetail {
+    display: flex;
+    flex-wrap: 
+} */
+
+.mheaderComment {
+    font-family: Helvetica;
+    font-size: 14px;
+    font-weight: bold;
+    float: left;
+}
+
+.icons {
+    display: flex;
+    flex-wrap: nowrap;
+    float: right;
+    flex-direction: row-reverse;
+}
+
+.mgroupTime {
+    color: #969696;
+    font-size: 12px;
+    font-family: Helvetica;
+    border-bottom: 1px;
 }
 
 .modalMain {
     position: fixed;
-    background: white;
+    background: #fff;
     width: 913px;
     height: 844px;
     top: 50%;

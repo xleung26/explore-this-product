@@ -4,8 +4,6 @@ import $ from 'jquery';
 import styles from './explores.css';
 import BeautyMatch from '../../../Assets/BeautyMatch.svg';
 import ExploresList from './exploresList.jsx';
-// import RightArrow from './exploreArrowRight.jsx'
-// import LeftArrow from './exploreArrowLeft.jsx'
 import Carousel from './carousel.jsx';
 import Modal from './Modal.jsx';
 
@@ -23,8 +21,6 @@ class Explores extends React.Component {
       date: "",
       productBrand: ""
     }],
-    // currentIndex: 0,
-    // translateValue: -7,
     modalShow: false,
     modalInfo: [{
       myid: "",
@@ -37,11 +33,9 @@ class Explores extends React.Component {
     }]
   }
 
-  this.fetchData = this.fetchData.bind(this);
-//   this.leftSlide = this.leftSlide.bind(this);
-//   this.rightSlide = this.rightSlide.bind(this);
-  this.modalStatus = this.modalStatus.bind(this);
-  this.modalGet = this.modalGet.bind(this);
+    this.fetchData = this.fetchData.bind(this);
+    this.modalStatus = this.modalStatus.bind(this);
+    this.modalGet = this.modalGet.bind(this);
   }
 
   componentDidMount () {
@@ -57,14 +51,6 @@ class Explores extends React.Component {
       .catch((err) => {console.log(err)})
   }
 
-//   leftSlide () {
-//     this.setState({ translateValue: -7 })
-//   }
-
-//   rightSlide () {
-//     this.setState({ translateValue: -107 })
-//   }
-
   modalStatus () {
    this.setState({ modalShow: !this.state.modalShow })
   }
@@ -79,37 +65,24 @@ class Explores extends React.Component {
 
   render () {
     return (
-    <div className={styles.container}>
-      <span style={{display: 'flex'}}>
-        <div className={styles.head1} >Looks ({this.state.lists.length})</div>
-        <input type="checkbox" /> Show looks from my
-        <img className={styles.BeautyMatch} src={BeautyMatch} />
-          Beauty Matches<br/>
-      </span>
-      <Carousel
-      lists={this.state.lists}
-      component={ExploresList}
-      modalGet={this.modalGet}
-      />
-      {/* <div className={styles.flexContainer}>
-        <LeftArrow 
-        leftSlide={this.leftSlide} 
-        /> */}
-        {/* <div className={styles.innercontainer} >
-          <div id="flexContainer" className={styles.flexContainer}>
-            {this.state.lists.map( (pic, key) => {
-            return <ExploresList 
-            key={key} 
-            pic={pic} 
-            modalGet={this.modalGet} 
-            translateValue={this.state.translateValue} 
-            />})}
-          </div>
-        </div> */}
-        {/* <RightArrow 
-        rightSlide={this.rightSlide} 
-        />
-      </div> */}
+    <div className={styles.exploreContainer} >
+        <div className={styles.head0} >Explore This Product</div>
+      <div className={styles.container}>
+        <div className={styles.head1}>
+          <div className={styles.looks}>Looks ({this.state.lists.length})</div>
+          <input style={{margin: '2px 15px'}} type="checkbox" /> 
+          <span className={styles.showLooks} >Show looks from my</span> 
+          <img className={styles.BeautyMatch} src={BeautyMatch} />
+          Beauty Matches
+        </div>
+        <div className={styles.carouselContainer} >
+          <Carousel
+          lists={this.state.lists}
+          component={ExploresList}
+          modalGet={this.modalGet}
+          />  
+        </div>
+      </div>
       <Modal 
       info={this.state.modalInfo} 
       show={this.state.modalShow} 

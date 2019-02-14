@@ -25,12 +25,11 @@ class Carousel extends React.Component {
 
   render () {
     return (
-      <div className={styles.flexContainer}>
+      <div className={styles.innercontainer}>
         <LeftArrow 
         leftSlide={this.leftSlide} 
         />
-        <div className={styles.innercontainer} >
-          <div id="flexContainer" className={styles.flexContainer}>
+          <div className={styles.flexContainer}>
           {this.props.lists.map( (list, key) => {
           return <this.props.component 
           key={key} 
@@ -39,7 +38,6 @@ class Carousel extends React.Component {
           translateValue={this.state.translateValue} 
           />})}
           </div>
-        </div>
         <RightArrow 
         rightSlide={this.rightSlide} 
         />

@@ -10,8 +10,8 @@ class ExploresList extends React.Component {
 
   render () {
     return (
-      <button className={styles.listbutton} onClick={() => this.props.modalGet(this.props.pic._id)} style={{transform: `translateX(${this.props.translateValue}%)`, transition: 'transform 300ms ease 0s'}} >
-        <img className={styles.imgs} src={this.props.pic.image} alt={this.props.pic.user}/>
+      <button className={styles.listbutton} onClick={() => this.props.modalGet(this.props.list._id)} style={{transform: `translateX(${this.props.translateValue}%)`, transition: 'transform 300ms ease 0s'}} >
+        <img className={styles.imgs} src={this.props.list.image} alt={this.props.list.user}/>
       </button>
 
     )

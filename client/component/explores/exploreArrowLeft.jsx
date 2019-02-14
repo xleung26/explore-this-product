@@ -1,13 +1,14 @@
 import React from 'react';
 import styles from './explores.css'
+import leftArrow from '../../../Assets/leftArrow.svg';
 
-const RightArrow = (props) => (
+const LeftArrow = (props) => (
   <div>
     <button onClick={props.leftSlide} className={styles.button} role="button" data-slide="prev">
-      <img className={styles.arrows} src={props.direction} />
+      <img className={styles.arrows} src={leftArrow} />
       </button>
   </div>
 
 )
 
-export default RightArrow;
+export default LeftArrow;

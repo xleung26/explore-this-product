@@ -1,12 +1,24 @@
 import React from 'react';
 import styles from './explores.css'
+// import Modal from './Modal.jsx'
 
-const ExploresList = (props) => (
+class ExploresList extends React.Component {
+  constructor(props) {
+    super(props);
 
-    <span style={{transform: `translateX(${props.translateValue}%)`, transition: 'transform 300ms ease 0s'}} >
-       <img className={styles.imgs} src={props.pic.image} alt={props.pic.user}/>
-    </span>
-)
+  }
+
+  render () {
+    return (
+      <button className={styles.listbutton} onClick={() => this.props.modalGet(this.props.pic._id)} style={{transform: `translateX(${this.props.translateValue}%)`, transition: 'transform 300ms ease 0s'}} >
+        <img className={styles.imgs} src={this.props.pic.image} alt={this.props.pic.user}/>
+      </button>
+
+    )
+  }
+
+}
+
 
 
 export default ExploresList;

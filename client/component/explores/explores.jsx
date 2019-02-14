@@ -8,20 +8,41 @@ import rightArrow from '../../../Assets/rightArrow.svg';
 import ExploresList from './exploresList.jsx';
 import RightArrow from './exploreArrowRight.jsx'
 import LeftArrow from './exploreArrowLeft.jsx'
-
+import Modal from './Modal.jsx'
 
 class Explores extends React.Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            lists: [{image: "", user: ""}],
+            lists: [{
+                myid: "",
+                user: "",
+                image: "",
+                headerComment : "",
+                comments: "",
+                date: "",
+                productBrand: ""
+              }],
             currentIndex: 0,
-            translateValue: -7
+            translateValue: -7,
+            modalShow: false,
+            modalInfo: [{
+                myid: "",
+                user: "",
+                image: "",
+                headerComment : "",
+                comments: "",
+                date: "",
+                productBrand: ""
+              }]
         }
+
         this.fetchData = this.fetchData.bind(this);
         this.leftSlide = this.leftSlide.bind(this);
         this.rightSlide = this.rightSlide.bind(this);
+        this.modalStatus = this.modalStatus.bind(this);
+        this.modalGet = this.modalGet.bind(this);
     }
     
     componentDidMount () {
@@ -49,9 +70,23 @@ class Explores extends React.Component {
         })
     }
 
-    slideWidth () {
-        return document.querySelector('#flexContainer').clientWidth;
+    modalStatus () {
+        this.setState({ modalShow: !this.state.modalShow }, () => console.log(this.state.modalShow))
     }
+
+    modalGet (value) {
+        axios
+          .get(`/explores/id`, {params: {id: value}})
+          .then((data) => {this.setState({
+            modalInfo: data.data
+            }, () => {
+                console.log(this.state.modalInfo)
+                this.modalStatus();
+            })
+          })
+          .catch(() => {console.log('failed to get id')})
+    }
+
 
     render () {
         return (
@@ -68,12 +103,13 @@ class Explores extends React.Component {
                     <div className={styles.innercontainer} >
                         <div id="flexContainer" className={styles.flexContainer}>
                             {this.state.lists.map( (pic, key) =>
-                            {return <ExploresList pic={pic} translateValue={this.state.translateValue} />}
+                            {return <ExploresList key={key} pic={pic} modalGet={this.modalGet} translateValue={this.state.translateValue} />}
                             )}
                         </div>
                     </div>
                     <RightArrow direction={rightArrow} rightSlide={this.rightSlide} />
                 </div>
+                <Modal info={this.state.modalInfo} show={this.state.modalShow} hideModal={this.modalStatus} />
                 {this.state.currentIndex}
             </div>
         )

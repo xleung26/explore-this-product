@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/exploreProducts');
+mongoose.connect('mongodb://localhost/exploreProducts', {useNewUrlParser: true});
 const mockarooData = require('../data.js');
 
 const db = mongoose.connection;
@@ -7,21 +7,22 @@ db.on('error', console.error.bind(console, 'connection error to db'));
 db.once('open', () => {console.log('connected to db')});
 
 const exploresSchema = new mongoose.Schema({
-  myid: {type: Number},
-  image: {type: String},
-  headerComment : {type: String},
-  comments: {type: String},
-  date: {type: Date},
-  productBrand: {type: String}
+  myid: {type: Number, unique: true},
+  user: {type: String, unique: true},
+  image: {type: String, unique: true},
+  headerComment : {type: String, unique: true},
+  comments: {type: String, unique: true},
+  date: {type: Date, unique: true},
+  productBrand: {type: String, unique: true}
 })
 
 const videosSchema = new mongoose.Schema({
-  video: {type: String},
-  videoTitle: {type: String}
+  video: {type: String, unique: true},
+  videoTitle: {type: String, unique: true}
 })
 
 const articlesSchema = new mongoose.Schema({
-  image: {type: String}
+  image: {type: String, unique: true}
 })
 
 const Explores = mongoose.model('Explores', exploresSchema);
@@ -96,8 +97,14 @@ let fetchExplore = (callback) => {
   })
   .catch((err) => {
     console.log('failure in fetchExplore')
-    callback(err, null);
+    callback('err', null);
   })
+}
+
+let fetchExploreId = (id, callback) => {
+  Explores.find().where({ _id: id })
+  .then((data) => {callback(null, data)})
+  .catch(() => callback('err', null))
 }
 
 let fetchArticle = () => {
@@ -120,7 +127,7 @@ let fetchVideos = () => {
   })
   .catch(() => {
     console.log('failure in fetchVideos')
-    callback(err, null);
+    callback('err', null);
   })  
 }
 
@@ -138,4 +145,4 @@ let fetchVideos = () => {
 
 // saveExplore(adjustedData, 'https://picsum.photos/148/132/?random');
 
-module.exports = { saveExplore , saveArticle, saveVideos, fetchExplore, fetchArticle, fetchVideos };
+module.exports = { saveExplore , saveArticle, saveVideos, fetchExplore, fetchArticle, fetchVideos, fetchExploreId };

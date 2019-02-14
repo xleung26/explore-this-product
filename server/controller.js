@@ -5,13 +5,22 @@ module.exports = {
       get: (req, res) => {
           db.fetchExplore((err, data) => {
               if (err) {
-                  console.log('err in explorers get')
                   res.status(404).send()
               } else {
-                  console.log('success in explorers get')
                   res.status(200).send(data);
               }
           })
+      },
+
+      getid: (req, res) => {
+        const { id } = req.query;
+        db.fetchExploreId(id, (err, data) => {
+            if (err) {
+                res.status(404).send()
+            } else {
+                res.status(200).send(data);
+            }
+        })
       }
   },
   videos: {

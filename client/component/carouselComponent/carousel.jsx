@@ -11,7 +11,7 @@ class Carousel extends React.Component {
       translateValue: -25,
       currentIndex: 0
     }
-    
+    this.variable = (this.props.listLength - (this.props.listLength % 5)) / 5;
     this.leftSlide = this.leftSlide.bind(this);
     this.rightSlide = this.rightSlide.bind(this);
   }
@@ -24,9 +24,9 @@ class Carousel extends React.Component {
       this.setState({ translateValue: -25 }, () => this.setState((prevState) => ({ currentIndex: prevState.currentIndex -1 })))
     }
     if ( (this.state.currentIndex > 0) && (this.state.currentIndex !== 1)) {
-      this.setState({ translateValue: ((x-1) * 5 * -190) }, () => this.setState((prevState) => ({ currentIndex: prevState.currentIndex -1 })))
-    }
+      this.setState((prevState) => ({ currentIndex: prevState.currentIndex -1 }), () => this.setState({ translateValue: (this.state.currentIndex * 5 * -190) }))
 
+    }
   }
 
   rightSlide () {
@@ -46,6 +46,10 @@ class Carousel extends React.Component {
   }
 
   render () {
+
+    let x = (this.props.listLength - (this.props.listLength % 5)) / 5;
+
+
     return (
       <div>  
         <div className={styles.innercontainer}>
@@ -66,8 +70,7 @@ class Carousel extends React.Component {
           />
         </div>
         <div className={styles.toggleContainer}>
-            <div id="0" className={styles.toggleButton} ></div>
-            <div id="1" className={styles.toggleButton} ></div>
+            {[...Array(x+1).keys()].map((id, key) => { return <div key={key} id={JSON.stringify(id)} className={styles.toggleButton}></div>})}
         </div>
         <div>{this.state.currentIndex}</div>
       </div>

@@ -78,14 +78,14 @@ let saveVideos = (data) => {
 
 var randomID = () => {
   let arr = [];
-  for (let i = 0; i < 12; i++){
+  for (let i = 0; i < 18; i++){
     arr.push(Math.floor(600*Math.random()));
   }
   return arr;
 }
 
 let fetchExplore = (callback) => {
-  Explores.find({myid: { $in: randomID()}}).limit(12)
+  Explores.find({myid: { $in: randomID()}}).limit(18)
   .then((data) => {
     console.log('success in fetchExplore')
     callback(null, data);

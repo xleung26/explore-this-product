@@ -1,3 +1,7 @@
+/* body:not(.loaded) #slider img {
+    display:none;
+} */
+/* https://stackoverflow.com/questions/7411541/how-to-prevent-the-white-flash-on-page-load-created-by-background-image-loadin */
 
 /* 
 explores css
@@ -120,8 +124,8 @@ carousel css
 .toggleButton {
     width: 10px;
     height: 10px;
-    /* background-color: rgb(204, 204, 204); */
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(204, 204, 204);
+    /* background-color: rgb(0, 0, 0); */
     border-radius: 99999px;
     cursor: pointer;
     margin: 3px;
@@ -314,6 +318,10 @@ exploresList css
     width: 1.25em;
     margin-right: 5px;
     margin-top: 3px;
+}
+
+.heart:hover {
+    fill: red;
 }
 
 .mmwrapper {

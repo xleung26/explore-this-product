@@ -22,7 +22,7 @@ class Explores extends React.Component {
       date: "",
       productBrand: ""
     }],
-    modalShow: false,
+    modalShow: null,
     modalInfo: [{
       myid: "",
       user: "",
@@ -35,8 +35,9 @@ class Explores extends React.Component {
   }
 
     this.fetchData = this.fetchData.bind(this);
-    this.modalStatus = this.modalStatus.bind(this);
+    this.openModal = this.openModal.bind(this);
     this.modalGet = this.modalGet.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   componentDidMount () {
@@ -52,14 +53,18 @@ class Explores extends React.Component {
       .catch((err) => {console.log(err)})
   }
 
-  modalStatus () {
-   this.setState({ modalShow: !this.state.modalShow })
+  openModal () {
+   this.setState({ modalShow: true })
+  }
+
+  closeModal () {
+    this.setState({ modalShow: null })
   }
 
   modalGet (value) {
     axios
       .get(`/explores/id`, {params: {id: value}})
-      .then((data) => {this.setState({ modalInfo: data.data}, () => {this.modalStatus()})})
+      .then((data) => {this.setState({ modalInfo: data.data}, () => {this.openModal()})})
       .catch(() => {console.log('failed to get id')})
   }
 
@@ -86,9 +91,9 @@ class Explores extends React.Component {
         </div>
       </div>
       <Modal 
+      show={this.state.modalShow}
       info={this.state.modalInfo} 
-      show={this.state.modalShow} 
-      hideModal={this.modalStatus} 
+      hideModal={this.closeModal} 
       />
       {this.state.currentIndex}
     </div>

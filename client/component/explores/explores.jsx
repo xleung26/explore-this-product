@@ -81,6 +81,7 @@ class Explores extends React.Component {
           lists={this.state.lists}
           component={ExploresList}
           modalGet={this.modalGet}
+          listLength={this.state.lists.length}
           />  
         </div>
       </div>

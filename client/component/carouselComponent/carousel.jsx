@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './explores.css';
+import styles from '../explores/explores.css';
 import RightArrow from './exploreArrowRight.jsx'
 import LeftArrow from './exploreArrowLeft.jsx'
 
@@ -16,11 +16,11 @@ class Carousel extends React.Component {
   }
 
   leftSlide () {
-    this.setState({ translateValue: -20 })
+    this.setState({ translateValue: -15 })
   }
 
   rightSlide () {
-    this.setState({ translateValue: -133 })
+    this.setState({ translateValue: -130 })
   }
 
   render () {

@@ -8,12 +8,12 @@ db.once('open', () => {console.log('connected to db')});
 
 const exploresSchema = new mongoose.Schema({
   myid: {type: Number, unique: true},
-  user: {type: String, unique: true},
-  image: {type: String, unique: true},
   headerComment : {type: String, unique: true},
   comments: {type: String, unique: true},
+  user: {type: String, unique: true},
   date: {type: Date, unique: true},
-  productBrand: {type: String, unique: true}
+  productBrand: {type: String, unique: true},
+  image: {type: String, unique: true}
 })
 
 const videosSchema = new mongoose.Schema({
@@ -40,19 +40,19 @@ function adjust (array, url) {
 
 let adjustedData = adjust(mockarooData.mockarooData, 'https://picsum.photos/420/420/?random')
 
-
 let saveExplore = (data) => {
   data.forEach(entry => {
     entry = new Explores ({
       myid: entry.myid,
-      image: entry.image,
       headerComment : entry.headerComments,
       comments: entry.comments,
+      user: entry.user,
       date: entry.date,
-      productBrand: entry.productBrand
+      productBrand: entry.productBrand,
+      image: entry.image
     }).save()
-    .then(() => {console.log('success in storing data into Explore table')})
-    .catch(() => {console.log('failed to insert data into Explore table')})
+    .then(() => {console.log('success in storing data into Explores table')})
+    .catch(() => {console.log('failed to insert data into Explores table')})
   })
 }
 
@@ -83,11 +83,6 @@ var randomID = () => {
   }
   return arr;
 }
-
-let store = randomID();
-console.log(store);
-
-//   
 
 let fetchExplore = (callback) => {
   Explores.find({myid: { $in: randomID()}}).limit(6)
@@ -131,8 +126,6 @@ let fetchVideos = () => {
   })  
 }
 
-// 'https://picsum.photos/148/132/?random'
-
 // for (let i = 0; i <100; i++) {
 //   saveArticle([{image: 'https://picsum.photos/148/132/?random'}])
 // }
@@ -141,8 +134,7 @@ let fetchVideos = () => {
 //   video: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
 //   videoTitle: 'Very funny bunny video'
 // }])
-// http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4
 
-// saveExplore(adjustedData, 'https://picsum.photos/148/132/?random');
+// saveExplore(adjustedData);
 
 module.exports = { saveExplore , saveArticle, saveVideos, fetchExplore, fetchArticle, fetchVideos, fetchExploreId };

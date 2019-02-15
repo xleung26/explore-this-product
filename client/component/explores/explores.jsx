@@ -4,8 +4,9 @@ import $ from 'jquery';
 import styles from './explores.css';
 import BeautyMatch from '../../../Assets/BeautyMatch.svg';
 import ExploresList from './exploresList.jsx';
-import Carousel from './carousel.jsx';
+import Carousel from '../carouselComponent/carousel.jsx';
 import Modal from './Modal.jsx';
+import Checkbox from '../svgComponent/checkbox.jsx';
 
 class Explores extends React.Component {
   constructor(props) {
@@ -70,7 +71,7 @@ class Explores extends React.Component {
       <div className={styles.container}>
         <div className={styles.head1}>
           <div className={styles.looks}>Looks ({this.state.lists.length})</div>
-          <input style={{margin: '2px 15px'}} type="checkbox" /> 
+          <Checkbox /> 
           <span className={styles.showLooks} >Show looks from my</span> 
           <img className={styles.BeautyMatch} src={BeautyMatch} />
           Beauty Matches

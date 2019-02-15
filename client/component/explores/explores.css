@@ -50,6 +50,18 @@ explores css
     font-family: Helvetica;
 }
 
+.checkBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    border-width: 2px;
+    border-color: rgb(0, 0, 0);
+    margin: 2px 15px;
+}
+
 .showLooks {
     font-size: 14px;
     font-family: Helvetica; 
@@ -141,8 +153,11 @@ exploresList css
     width: 164px;
     height: 164px;
     margin: 12px;
-    background-color: transparent;
-    border: none;
+    cursor: pointer;
+}
+
+.listbutton:hover {
+    opacity: 0.5;
 }
 
 .imgs {
@@ -164,8 +179,10 @@ exploresList css
     left: 0;
     width: 100%;
     height: 100%;
+    max-height: 100vh;
     display: block;
     background: rgba(0, 0, 0, 0.4);
+    overflow-y: auto;
 }
 
 .modalDisplayNone {
@@ -176,6 +193,27 @@ exploresList css
     height: 100%;
     display: none;
     background: rgba(0, 0, 0, 0.6);
+
+}
+
+.modalMain {
+    position: relative;
+    background: #fff;
+    width: 913px;
+    height: 844px;
+    max-height: 100vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow-y: auto;
+}
+
+.lightBoxHeader {
+    width: 913px;
+    height: 68px; 
+    border-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .mLooks {
@@ -190,19 +228,6 @@ exploresList css
     align-self: center;
 }
 
-.mmwrapper {
-    display: flex;
-    flex-wrap: nowrap;
-}
-
-.mimage {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    align-self: center;
-    margin: auto;
-}
-
 .close {
     height: 29px;
     width: 29px;
@@ -211,42 +236,171 @@ exploresList css
     display: flex;
     float: right;
     align-content: center;
+    align-self: center;
     margin-right: 15px;
+    background-size: cover;
 
 }
 
-/* .mimageDetail {
-    display: flex;
-    flex-wrap: 
-} */
-
-.mheaderComment {
-    font-family: Helvetica;
-    font-size: 14px;
-    font-weight: bold;
-    float: left;
+.mx {
+    display: inline-block;
+    height: 1em;
+    fill: currentColor;
+    position: relative;
+    vertical-align: text-bottom;
+    width: 1em;
+    -webkit-transition: -webkit-transform .2s;
+    -webkit-transition: transform .2s;
+    transition: transform .2s;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
 }
 
 .icons {
+    width: 100px;
+    height: 23px;
     display: flex;
     flex-wrap: nowrap;
     float: right;
     flex-direction: row-reverse;
+    /* justify-content: flex-end; */
+}
+
+.mshare {
+    display: flex;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    cursor: pointer;
+}
+
+.heartContainer {
+    width: 42.5px;
+    height: 22px;
+    font-weight: 700;
+    line-height: 23px;
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-left: 11px;
+}
+
+.heart {
+    display: flex;
+    height: 1em;
+    fill: currentColor;
+    position: relative;
+    vertical-align: text-bottom;
+    width: 1.25em;
+    margin-right: 5px;
+    margin-top: 3px;
+}
+
+.mmwrapper {
+    width: 913px;
+    height: 461px;
+    display: flex;
+    flex-wrap: nowrap;
+    position: absolute;
+    border-bottom: solid 1px #eee;
+    border-top: solid 1px #eee;
+}
+
+.mimageHolder {
+    width: 460px;
+    height: 461px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin: auto auto;
+}
+
+.mimg {
+    width: 420px;
+    height: 420px;
+    align-self: center;
+}
+
+.minfoPanel {
+    width: 453px; 
+    height: 234px;
+    margin-top: 10px;
+}
+
+.mimgDetailHead {
+    width: 425px;
+    height: 31px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.mheaderComment {
+    font-family: "helvetica neue",helvetica,arial,sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    float: left;
 }
 
 .mgroupTime {
+    width: 425px;
+    height: 21px;
     color: #969696;
     font-size: 12px;
     font-family: Helvetica;
     border-bottom: 1px;
+    display: flex;
+    flex-wrap: nowrap;
 }
 
-.modalMain {
-    position: fixed;
-    background: #fff;
-    width: 913px;
-    height: 844px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.mcomments {
+    width: 425px;
+    height: 84px;
+    display: flex;
+    align-self: center;
+    align-items: center;
+    border-bottom: 5px;
+    font-family: Helvetica;
+    font-size: 14px;
+}
+
+.userInfoContainer {
+    font-size: 12px; 
+    font-weight: 700;
+    margin-top: 10px;
+    margin-left: 15px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.userInfo {
+    width: 425px; 
+    height: 42px;
+    display: inline-flex;
+    justify-content: flex-start;
+    cursor: pointer;
+}
+
+.gallery {
+    width: 425px; 
+    height: 21px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 5px;
+    margin-top: 2px;
+}
+
+.report {
+    width: 425px; 
+    height: 21px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    font-size: 13px;
+    margin-left: 5px;
+    margin-top: 15px;
 }

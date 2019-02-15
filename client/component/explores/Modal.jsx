@@ -1,5 +1,9 @@
 import React from 'react';
 import styles from './explores.css'
+import sephoraAvatar from '../../../Assets/sephoraAvatar.svg';
+import HeartSVG from '../svgComponent/heart.jsx';
+import ShareSVG from '../svgComponent/share.jsx';
+import CloseModalSVG from '../svgComponent/closeModal.jsx'
 
 class Modal extends React.Component {
 
@@ -15,46 +19,64 @@ class Modal extends React.Component {
     return (
       <div className={showHideClassName}>
         <section className={styles.modalMain}>
-          <div style={{width: '913px', height: '68px', borderBottom: '5px'}} >
+          <div className={styles.lightBoxHeader} style={{width: '913px', height: '68px', borderBottom: '5px'}} >
             <span className={styles.mLooks} >Look info</span>
-            <div className={styles.close} >
-              <button onClick={this.props.hideModal}>x</button>
+            <div onClick={this.props.hideModal} className={styles.close} >
+                <CloseModalSVG />
             </div>
           </div>
-          <div>
+          <div style={{width: '913px', height: '461px'}}>
             <div className={styles.mmwrapper} >
-              <div className="pictureHolder" style={{width: '460px', height: '461px'}} >
-                <img src={this.props.info[0].image} />
+              <div className={styles.mimageHolder} >
+                <img className={styles.mimg} src={this.props.info[0].image} />
               </div>
 
-              <div className="infoPanel" style={{width: '453px', height: '234px'}} >
-                <div style={{width: '425px', height: '77px'}} >
-                  {/* <div style={{width: '425px', height: '178px'}}>          </div> */}
-                  <div className={styles.mmwrapper} >
-                    <div className={styles.mheaderComment} >{this.props.info[0].headerComment}</div>
-                    <div className={styles.icons} style={{width: '100px', height: '23px'}}>
-                      <div>Send Image</div>
-                      <div>Heart</div>
+              <div className={styles.minfoPanel} >
+                {/* <div style={{width: '425px', height: '77px'}} ></div> */}
+                  <div style={{width: '425px', height: '178px', marginTop: '10px'}}>
+                    <div className={styles.mimgDetailHead} >
+                      <div className={styles.mheaderComment}>
+                        {this.props.info[0].headerComment}
+                      </div>
+                      <div className={styles.icons}>
+
+                        <div className={styles.heartContainer}>
+                          <HeartSVG />
+                          <div>{Math.floor(Math.random()*20)}</div>
+                        </div>
+                        <ShareSVG />
+                      </div>
                     </div>
+                    <div className={styles.mgroupTime}>
+                      <div >in <span style={{ fontWeight: 'bold' }}>{" " + this.props.info[0].productBrand}</span> | </div>
+                      <div>{this.props.info[0].date.slice(0,7)}</div>
+                    </div><br/>
+                    <div className={styles.mcomments} >{this.props.info[0].comments}</div>
                   </div>
-                  <div className={styles.mgroupTime} style={{width: '425px', height: '21px'}}>
-                    <div >in <span style={{ fontWeight: 'bold' }}>{" " + this.props.info[0].productBrand}</span> |</div>
-                    <div>{this.props.info[0].date.toString()}</div>
+                  <div className={styles.userInfo}>
+                    <div style={{ cursor: 'pointer' }}>
+                      <img src={sephoraAvatar} />
+                    </div>
+                    <div className={styles.userInfoContainer}>
+                      <div >{this.props.info[0].user}</div>
+                      <div style={{ display: 'flex', flexWrap: 'nowrap'}}>
+                        <div>
+                          <img style={{ width: '39px', height: '15px', margin: '3px', marginLeft: '0px', cursor: 'pointer' }} src="https://photorankstatics-a.akamaihd.net/static/frontend/sephora-js/assets/img/og-badge-sephora_brand.png" />
+                        </div>
+                        <div>
+                          <img style={{ width: '52.5px', height: '15px', margin: '3px', cursor: 'pointer' }} src="https://photorankstatics-a.akamaihd.net/static/frontend/sephora-js/assets/img/og-engagement-rookie-01.png" />
+                        </div>
+                      </div>
+                    </div>
+                  
                   </div>
-
-                    <div className="comments">{this.props.info[0].comments}</div>
-
-                  <div style={{width: '425px', height: '42px'}}>
-                    <div>Sephora Avatar</div>
-                    <div className="user">{this.props.info[0].user}</div>
-                  </div>
-                  <div style={{width: '425px', height: '21px'}}>
+                  <div className={styles.gallery} >
                     See this look in the Gallery >
                   </div>
-                  <div style={{width: '425px', height: '21px'}}>
+                  <div className={styles.report} >
                     <a href='#'>Report</a>
                   </div>
-                </div>
+
               </div>
 
             </div>

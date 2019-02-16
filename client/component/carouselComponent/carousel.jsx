@@ -1,7 +1,8 @@
 import React from 'react';
 import styles from '../explores/explores.css';
-import RightArrow from './exploreArrowRight.jsx'
-import LeftArrow from './exploreArrowLeft.jsx'
+import RightArrow from './exploreArrowRight.jsx';
+import LeftArrow from './exploreArrowLeft.jsx';
+import Toggle from './toggleButton.jsx';
 
 class Carousel extends React.Component {
   constructor(props) {
@@ -11,17 +12,18 @@ class Carousel extends React.Component {
       translateValue: -25,
       currentIndex: 0
     }
-    this.variable = (this.props.listLength - (this.props.listLength % 5)) / 5;
+
     this.leftSlide = this.leftSlide.bind(this);
     this.rightSlide = this.rightSlide.bind(this);
+    this.handleToggle = this.handleToggle.bind(this);
   }
 
   leftSlide () {
 
     let x = (this.props.listLength - (this.props.listLength % 5)) / 5;
-    
-    if (this.state.currentIndex === 1){
-      this.setState({ translateValue: -25 }, () => this.setState((prevState) => ({ currentIndex: prevState.currentIndex -1 })))
+
+    if (this.state.currentIndex === 1 || this.state.currentIndex === 0){
+      this.setState({ translateValue: -25 }, () => {if (this.state.currentIndex !== 0) {this.setState((prevState) => ({ currentIndex: prevState.currentIndex -1 }))}})
     }
     if ( (this.state.currentIndex > 0) && (this.state.currentIndex !== 1)) {
       this.setState((prevState) => ({ currentIndex: prevState.currentIndex -1 }), () => this.setState({ translateValue: (this.state.currentIndex * 5 * -190) }))
@@ -43,6 +45,16 @@ class Carousel extends React.Component {
       if ((this.state.currentIndex < (x-1)) && (this.props.listLength % 5 === 0)) {
           this.setState({ translateValue: ((this.state.currentIndex + 1) * 5 * -189)}, () => {this.setState((prevState)=> ({ currentIndex: prevState.currentIndex + 1 }))})
       }
+  }
+
+  handleToggle (toggleId) {
+    if (toggleId > this.state.currentIndex) {
+      this.setState({ currentIndex : JSON.parse(toggleId) -1 }, () => { this.rightSlide() })
+    } 
+
+    if (toggleId < this.state.currentIndex) {
+      this.setState({ currentIndex : JSON.parse(toggleId) + 1 }, () => { this.leftSlide() })
+    }
   }
 
   render () {
@@ -70,7 +82,12 @@ class Carousel extends React.Component {
           />
         </div>
         <div className={styles.toggleContainer}>
-            {[...Array(x+1).keys()].map((id, key) => { return <div key={key} id={JSON.stringify(id)} className={styles.toggleButton}></div>})}
+            {[...Array(x+1).keys()].map((id, key) => { 
+              return <Toggle 
+              key={key} 
+              id={JSON.stringify(id)} 
+              currentIndex = {this.state.currentIndex}
+              handleToggle={this.handleToggle} />})}
         </div>
         <div>{this.state.currentIndex}</div>
       </div>

@@ -19,7 +19,7 @@ class Modal extends React.Component {
     return (
       <div className={showHideClassName}>
         <section className={styles.modalMain}>
-          <div className={styles.lightBoxHeader} style={{width: '913px', height: '68px', borderBottom: '5px'}} >
+          <div className={styles.lightBoxHeader} >
             <span className={styles.mLooks} >Look info</span>
             <div onClick={this.props.hideModal} className={styles.close} >
                 <CloseModalSVG />
@@ -33,7 +33,7 @@ class Modal extends React.Component {
 
               <div className={styles.minfoPanel} >
                 {/* <div style={{width: '425px', height: '77px'}} ></div> */}
-                  <div style={{width: '425px', height: '178px', marginTop: '10px'}}>
+                  <div className={styles.userInfoPanel} >
                     <div className={styles.mimgDetailHead} >
                       <div className={styles.mheaderComment}>
                         {this.props.info[0].headerComment}
@@ -61,10 +61,10 @@ class Modal extends React.Component {
                       <div >{this.props.info[0].user}</div>
                       <div style={{ display: 'flex', flexWrap: 'nowrap'}}>
                         <div>
-                          <img style={{ width: '39px', height: '15px', margin: '3px', marginLeft: '0px', cursor: 'pointer' }} src="https://photorankstatics-a.akamaihd.net/static/frontend/sephora-js/assets/img/og-badge-sephora_brand.png" />
+                          <img className={styles.sephoraBrand} src="https://photorankstatics-a.akamaihd.net/static/frontend/sephora-js/assets/img/og-badge-sephora_brand.png" />
                         </div>
                         <div>
-                          <img style={{ width: '52.5px', height: '15px', margin: '3px', cursor: 'pointer' }} src="https://photorankstatics-a.akamaihd.net/static/frontend/sephora-js/assets/img/og-engagement-rookie-01.png" />
+                          <img className={styles.rookie} src="https://photorankstatics-a.akamaihd.net/static/frontend/sephora-js/assets/img/og-engagement-rookie-01.png" />
                         </div>
                       </div>
                     </div>

@@ -124,7 +124,7 @@ carousel css
 .toggleButton {
     width: 10px;
     height: 10px;
-    background-color: rgb(204, 204, 204);
+    /* background-color: rgb(204, 204, 204); */
     /* background-color: rgb(0, 0, 0); */
     border-radius: 99999px;
     cursor: pointer;
@@ -280,6 +280,14 @@ exploresList css
     transform: rotate(45deg);
 }
 
+.userInfoPanel {
+    width: 425px; 
+    height: 178px; 
+    margin-top: 10px;
+    border-bottom: solid 1px #eee;
+
+}
+
 .icons {
     width: 100px;
     height: 23px;
@@ -296,6 +304,23 @@ exploresList css
     height: 20px;
     position: relative;
     cursor: pointer;
+}
+
+.sephoraBrand {
+    width: 39px; 
+    height: 15px; 
+    margin: 3px; 
+    margin-left: 0px; 
+    cursor: pointer; 
+
+}
+
+.rookie {
+    width: 52.5px;
+    height: 15px; 
+    margin: 3px; 
+    cursor: pointer;
+
 }
 
 .heartContainer {

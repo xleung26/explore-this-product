@@ -60,7 +60,12 @@ class Carousel extends React.Component {
   render () {
 
     let x = (this.props.listLength - (this.props.listLength % 5)) / 5;
-
+    let y;
+    if (this.props.listLength % 5 !== 0){
+      y = x+ 1;
+    } else {
+      y= x;
+    }
 
     return (
       <div>  
@@ -82,14 +87,15 @@ class Carousel extends React.Component {
           />
         </div>
         <div className={styles.toggleContainer}>
-            {[...Array(x+1).keys()].map((id, key) => { 
+            {
+              [...Array(y).keys()].map((id, key) => { 
               return <Toggle 
               key={key} 
               id={JSON.stringify(id)} 
               currentIndex = {this.state.currentIndex}
-              handleToggle={this.handleToggle} />})}
+              handleToggle={this.handleToggle} />})
+            }
         </div>
-        <div>{this.state.currentIndex}</div>
       </div>
     )
   }

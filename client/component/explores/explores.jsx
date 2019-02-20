@@ -2,11 +2,12 @@ import React from 'react';
 import axios from 'axios';
 import $ from 'jquery';
 import styles from './explores.css';
-import BeautyMatch from '../../../Assets/BeautyMatch.svg';
+import beautyMatch from '../../../Assets/BeautyMatchIcon.png';
 import ExploresList from './exploresList.jsx';
 import Carousel from '../carouselComponent/carousel.jsx';
 import Modal from './Modal.jsx';
 import Checkbox from '../svgComponent/checkbox.jsx';
+import QuestionBubble from '../svgComponent/questionBubble.jsx';
 
 class Explores extends React.Component {
   constructor(props) {
@@ -75,11 +76,15 @@ class Explores extends React.Component {
         <div className={styles.head0} >Explore This Product</div>
       <div className={styles.container}>
         <div className={styles.head1}>
-          <div className={styles.looks}>Looks ({this.state.lists.length})</div>
-          <Checkbox /> 
+          <div className={styles.looks}>Looks {this.state.lists.length}</div>
+          {/* <div style={{ width: '18px', height: '18px', margin: '3px'}}> */}
+            <Checkbox />
+          {/* </div>  */}
           <span className={styles.showLooks} >Show looks from my</span> 
-          <img className={styles.BeautyMatch} src={BeautyMatch} />
-          Beauty Matches
+          <img className={styles.beautyMatch} src={beautyMatch} />
+          <div style={{ width: '18px', height: '18px', margin: '3px', alignSelf: 'center' }}>
+            <QuestionBubble />            
+          </div>
         </div>
         <div className={styles.carouselContainer} >
           <Carousel

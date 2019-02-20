@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import $ from 'jquery';
 import styles from './explores.css';
 import beautyMatch from '../../../Assets/BeautyMatchIcon.png';
 import ExploresList from './exploresList.jsx';
@@ -42,13 +41,16 @@ class Explores extends React.Component {
   }
 
   componentDidMount () {
-    this.fetchData()
+    let random = (Math.floor(Math.random() * 100));
+    console.log(random);
+    this.fetchData(random)
   }
 
-  fetchData () {
+  fetchData (random) {
     axios 
-      .get('/explores')
+      .get('/explores', {params: { id: random}})
       .then((data) => {
+        console.log(data)
         this.setState({ lists: data.data })
         })
       .catch((err) => {console.log(err)})
@@ -77,9 +79,9 @@ class Explores extends React.Component {
       <div className={styles.container}>
         <div className={styles.head1}>
           <div className={styles.looks}>Looks {this.state.lists.length}</div>
-          {/* <div style={{ width: '18px', height: '18px', margin: '3px'}}> */}
+          <div style={{ width: '18px', height: '18px', margin: '3px'}}>
             <Checkbox />
-          {/* </div>  */}
+          </div> 
           <span className={styles.showLooks} >Show looks from my</span> 
           <img className={styles.beautyMatch} src={beautyMatch} />
           <div style={{ width: '18px', height: '18px', margin: '3px', alignSelf: 'center' }}>

@@ -3,29 +3,32 @@ const db = require('../db/index.js');
 module.exports = {
   explores: {
       get: (req, res) => {
-          db.fetchExplore((err, data) => {
+        let { id } = req.query;
+        
+        db.fetchExplore(id, (err, data) => {
               if (err) {
                   res.status(404).send()
               } else {
-                  res.status(200).send(data);
+                  console.log(data[0].exploresLists)
+                  res.status(200).send(data[0].exploresLists);
               }
           })
       },
 
-      getid: (req, res) => {
-        const { id } = req.query;
-        db.fetchExploreId(id, (err, data) => {
-            if (err) {
-                res.status(404).send()
-            } else {
-                res.status(200).send(data);
-            }
-        })
-      }
+    //   getid: (req, res) => {
+    //     const { id } = req.query;
+    //     db.fetchExploreId(id, (err, data) => {
+    //         if (err) {
+    //             res.status(404).send()
+    //         } else {
+    //             res.status(200).send(data);
+    //         }
+    //     })
+    //   }
   },
   videos: {
       get: (req, res) => {
-          db.fetchVideos((err, data) => {
+        db.fetchVideos(id, (err, data) => {
               if (err) {
                   console.log('err in videos get')
                   res.status(404).send()
@@ -38,7 +41,7 @@ module.exports = {
   },
   articles: {
       get: (req, res) => {
-          db.saveArticle((err, data) => {
+        db.saveArticle(id, (err, data) => {
               if (err) {
                   console.log('err in articles get')
                   res.status(404).send()

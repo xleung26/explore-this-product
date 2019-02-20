@@ -7,21 +7,18 @@ db.on('error', console.error.bind(console, 'connection error to db'));
 db.once('open', () => {console.log('connected to db')});
 
 const exploresSchema = new mongoose.Schema({
-  myid: {type: Number, unique: true},
-  headerComment : {type: String, unique: true},
-  comments: {type: String, unique: true},
-  user: {type: String, unique: true},
-  date: {type: Date, unique: true},
-  productBrand: {type: String, unique: true},
-  image: {type: String, unique: true}
+  productId: {type: Number, unique: true},
+  exploresLists: {type: Array, unique: true}
 })
 
 const videosSchema = new mongoose.Schema({
+  productId: {type: Number, unique: true},
   video: {type: String, unique: true},
   videoTitle: {type: String, unique: true}
 })
 
 const articlesSchema = new mongoose.Schema({
+  productId: {type: Number, unique: true},
   image: {type: String, unique: true}
 })
 
@@ -31,48 +28,36 @@ const Videos = mongoose.model('Videos', videosSchema);
 
 const Articles = mongoose.model('Articles', articlesSchema);
 
-function adjust (array, url) {
-  for (let i = 0; i < array.length; i++) {
-    array[i].image = url;
-  }
-  return array;
-}
-
-let adjustedData = adjust(mockarooData.mockarooData, 'https://picsum.photos/420/420/?random')
-
 let saveExplore = (data) => {
   data.forEach(entry => {
     entry = new Explores ({
-      myid: entry.myid,
-      headerComment : entry.headerComments,
-      comments: entry.comments,
-      user: entry.user,
-      date: entry.date,
-      productBrand: entry.productBrand,
-      image: entry.image
+      productId: entry.id,
+      exploresLists: entry.explores
     }).save()
     .then(() => {console.log('success in storing data into Explores table')})
     .catch(() => {console.log('failed to insert data into Explores table')})
   })
 }
 
-let saveArticle = (data) => {
-  data.forEach(entry => {
-    entry = new Articles({
-      image: entry.image
-    }).save()
-    .then(() => {console.log('success in storing data into Ariticle table')})
-    .catch(() => {console.log('failed to insert data into Article table')})
-  })
-}
-
 let saveVideos = (data) => {
   data.forEach(entry => {
     entry = new Videos({ 
+      productId: entry.id,
       video: entry.video,
       videoTitle: entry.videoTitle}).save()
       .then(() => { console.log('success in storing data in Videos table') })
       .catch(() => { console.log('failed to insert data into Videos table')})
+  })
+}
+
+let saveArticle = (data) => {
+  data.forEach(entry => {
+    entry = new Articles({
+      productId: entry.id,
+      image: entry.image
+    }).save()
+    .then(() => {console.log('success in storing data into Ariticle table')})
+    .catch(() => {console.log('failed to insert data into Article table')})
   })
 }
 
@@ -84,8 +69,8 @@ var randomID = () => {
   return arr;
 }
 
-let fetchExplore = (callback) => {
-  Explores.find({myid: { $in: randomID()}}).limit(18)
+let fetchExplore = (id, callback) => {
+  Explores.find({productId: id})
   .then((data) => {
     console.log('success in fetchExplore')
     callback(null, data);
@@ -96,14 +81,14 @@ let fetchExplore = (callback) => {
   })
 }
 
-let fetchExploreId = (id, callback) => {
-  Explores.find().where({ _id: id })
-  .then((data) => {callback(null, data)})
-  .catch(() => callback('err', null))
-}
+// let fetchExploreId = (id, callback) => {
+//   Explores.find().where({ _id: id })
+//   .then((data) => {callback(null, data)})
+//   .catch(() => callback('err', null))
+// }
 
-let fetchArticle = () => {
-  Articles.find({ _id: { $in: randomID()}}).limit(1)
+let fetchArticle = (id) => {
+  Articles.find({ productId: id })
   .then((data) => {
     console.log('success in fetchArticles')
     callback(null, data);
@@ -114,8 +99,8 @@ let fetchArticle = () => {
   })  
 } 
 
-let fetchVideos = () => {
-  Videos.find({})
+let fetchVideos = (id) => {
+  Videos.find({ productId: id })
   .then((data) => {
     console.log('success in fetchVideos')
     callback(null, data);
@@ -126,15 +111,57 @@ let fetchVideos = () => {
   })  
 }
 
-// for (let i = 0; i <100; i++) {
-//   saveArticle([{image: 'https://picsum.photos/148/132/?random'}])
-// }
+function adjust (array, url) {
+  for (let i = 0; i < array.length; i++) {
+    array[i].image = url;
+  }
+  return array;
+}
 
+let adjustedData = adjust(mockarooData.mockarooData, 'https://picsum.photos/420/420/?random')
+
+function formatData (array) {
+  let newArr = [];
+  // for loop to create the 100 product list
+  for (let i = 1; i <= 100; i++){
+    let newObj = { id: i, explores: [] }
+    // tracker to make 
+    let trackerObj = {}
+    // randomize the length of the array of each product
+    let arrayLengthGenerator = (Math.max(Math.floor(Math.random() * 30), 6))
+    // for loop to create the explores array of randomized dummy data (which is the array passed in)
+    for (let k = 0; k < arrayLengthGenerator; k++){
+      // random is used to randomize the data grabbed from dummy data (600 of them) 
+      let random = Math.floor(Math.random() * 600)
+      if(!trackerObj[random]){
+        trackerObj[random] = random;
+        newObj.explores.push( array[random] )
+      }
+    }
+    newArr.push(newObj);
+  }
+  return newArr;
+}
+
+let dataArr = formatData(adjustedData);
+
+// console.log(dataArr[0])
+
+// for (let i = 1; i <= 100; i++) {
 // saveVideos([{
+//   id: i,
 //   video: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
 //   videoTitle: 'Very funny bunny video'
 // }])
+// }
 
-// saveExplore(adjustedData);
+// for (let i = 1; i <= 100; i++) {
+//   saveArticle([{
+//     id: i, 
+//     image: 'https://picsum.photos/148/132/?random'
+//   }])
+// }
 
-module.exports = { saveExplore , saveArticle, saveVideos, fetchExplore, fetchArticle, fetchVideos, fetchExploreId };
+// saveExplore(dataArr);
+
+module.exports = { exploresSchema, videosSchema, articlesSchema, saveExplore , saveArticle, saveVideos, fetchExplore, fetchArticle, fetchVideos };

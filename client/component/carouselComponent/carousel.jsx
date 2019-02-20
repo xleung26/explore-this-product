@@ -27,7 +27,6 @@ class Carousel extends React.Component {
     }
     if ( (this.state.currentIndex > 0) && (this.state.currentIndex !== 1)) {
       this.setState((prevState) => ({ currentIndex: prevState.currentIndex -1 }), () => this.setState({ translateValue: (this.state.currentIndex * 5 * -190) }))
-
     }
   }
 

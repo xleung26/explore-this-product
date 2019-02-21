@@ -16,6 +16,7 @@ explores css
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    margin: 5px;
 }
 
 .container {
@@ -42,9 +43,7 @@ explores css
     width: 980px;
     height: 13px;
     display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-self: flex-start;
+    /* flex-wrap: nowrap; */
     justify-content: flex-start;
 }
 
@@ -55,41 +54,10 @@ explores css
 }
 
 
-.checkBox {
-    width: 18px;
-    height: 18px;
-    border-radius: 4px;
-    border-width: 2px;
-    border-color: rgb(0, 0, 0);
-    margin: 2px 15px;
-}
-
-.questionBubble {
-    display: inline-block;
-    align-self: center;
-    height: 1em;
-    fill: rgb(204, 204, 204);
-    position: relative;
-    vertical-align: text-bottom;
-    width: 1em;
-    margin: 3px;
-    margin-top: 5px;
-}
-
-.questionBubble:hover {
-    fill: rgb(0, 0, 0);
-}
-
 .showLooks {
     font-size: 14px;
     font-family: Helvetica; 
-}
-
-.carouselContainer {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    align-self: center;
+    margin-left: 30px;
 }
 
 .beautyMatch {
@@ -101,9 +69,14 @@ explores css
     cursor: pointer;
 }
 
-/* 
-carousel css
----------------------------------------------------------> */
+/* carousel css */
+.carouselContainer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    align-self: center;
+}
+
 .innercontainer {
     width: 980px;
     height:198px;
@@ -112,8 +85,8 @@ carousel css
     justify-content: center;
     align-items: flex-start;
     align-content: flex-start;
-}
-
+  }
+  
 .flexContainer {
     width: 916px;
     height: 198px;
@@ -124,7 +97,6 @@ carousel css
     flex-wrap: nowrap;
     align-items: flex-start;
     align-content: flex-start;
-
 }
 
 .toggleContainer {
@@ -135,41 +107,7 @@ carousel css
     justify-content: center;
     align-content: flex-end;
     margin-top: 24px;
-}
-
-.toggleButton {
-    width: 10px;
-    height: 10px;
-    /* background-color: rgb(204, 204, 204); */
-    /* background-color: rgb(0, 0, 0); */
-    border-radius: 99999px;
-    cursor: pointer;
-    margin: 3px;
-}
-
-
-/* 
-arrows css
----------------------------------------------------------> */
-
-.arrows {
-    display: inline-flex; 
-    flex-direction: row;
-    width: 18px;
-    height: 36px;
-    vertical-align: middle;
-    margin: auto;
-    outline: none;
-    cursor: pointer;
-}
-
-.arrows:hover {
-    fill: rgb(102, 102, 102);
-}
-
-/* .arrows:disabled {
-    fill: rgb(238, 238, 238);
-} */
+  }
 
 .arrButton {
     display: inline-flex;
@@ -181,8 +119,7 @@ arrows css
     background-color: transparent;
     border: none;
     cursor: pointer;
-}
-
+}  
 
 /* 
 exploresList css
@@ -205,270 +142,4 @@ exploresList css
     height: 164px;
     margin: 12px;
     vertical-align: center;
-}
-
-
-/* modal css 
-------------------------------------------------------------->
-*/
-
-.modalDisplayBlock {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    max-height: 100vh;
-    display: block;
-    background: rgba(0, 0, 0, 0.4);
-    overflow-y: auto;
-}
-
-.modalDisplayNone {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: none;
-    background: rgba(0, 0, 0, 0.6);
-
-}
-
-.modalMain {
-    position: relative;
-    background: #fff;
-    width: 913px;
-    height: 844px;
-    max-height: 100vh;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    overflow-y: auto;
-}
-
-.lightBoxHeader {
-    width: 913px;
-    height: 68px; 
-    border-bottom: 5px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.mLooks {
-    font-weight: bold;
-    font-size: 16px;
-    font-family: Helvetica;
-    line-height: 30px;
-    display: flex;
-    align-content: center;
-    float: left;
-    margin-left: 15px;
-    align-self: center;
-}
-
-.close {
-    height: 29px;
-    width: 29px;
-    float: right;
-    cursor: pointer;
-    display: flex;
-    float: right;
-    align-content: center;
-    align-self: center;
-    margin-right: 15px;
-    background-size: cover;
-
-}
-
-.mx {
-    display: inline-block;
-    height: 1em;
-    fill: currentColor;
-    position: relative;
-    vertical-align: text-bottom;
-    width: 1em;
-    -webkit-transition: -webkit-transform .2s;
-    -webkit-transition: transform .2s;
-    transition: transform .2s;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-}
-
-.userInfoPanel {
-    width: 425px; 
-    height: 178px; 
-    margin-top: 10px;
-    border-bottom: solid 1px #eee;
-
-}
-
-.icons {
-    width: 100px;
-    height: 23px;
-    display: flex;
-    flex-wrap: nowrap;
-    float: right;
-    flex-direction: row-reverse;
-    /* justify-content: flex-end; */
-}
-
-.mshare {
-    display: flex;
-    width: 20px;
-    height: 20px;
-    position: relative;
-    cursor: pointer;
-}
-
-.sephoraBrand {
-    width: 39px; 
-    height: 15px; 
-    margin: 3px; 
-    margin-left: 0px; 
-    cursor: pointer; 
-
-}
-
-.rookie {
-    width: 52.5px;
-    height: 15px; 
-    margin: 3px; 
-    cursor: pointer;
-
-}
-
-.heartContainer {
-    width: 42.5px;
-    height: 22px;
-    font-weight: 700;
-    line-height: 23px;
-    display: inline-flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    margin-left: 11px;
-}
-
-.heart {
-    display: flex;
-    height: 1em;
-    fill: currentColor;
-    position: relative;
-    vertical-align: text-bottom;
-    width: 1.25em;
-    margin-right: 5px;
-    margin-top: 3px;
-}
-
-.heart:hover {
-    fill: red;
-}
-
-.mmwrapper {
-    width: 913px;
-    height: 461px;
-    display: flex;
-    flex-wrap: nowrap;
-    position: absolute;
-    border-bottom: solid 1px #eee;
-    border-top: solid 1px #eee;
-}
-
-.mimageHolder {
-    width: 460px;
-    height: 461px;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    margin: auto auto;
-}
-
-.mimg {
-    width: 420px;
-    height: 420px;
-    align-self: center;
-}
-
-.minfoPanel {
-    width: 453px; 
-    height: 234px;
-    margin-top: 10px;
-}
-
-.mimgDetailHead {
-    width: 425px;
-    height: 31px;
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-}
-
-.mheaderComment {
-    font-family: "helvetica neue",helvetica,arial,sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    float: left;
-}
-
-.mgroupTime {
-    width: 425px;
-    height: 21px;
-    color: #969696;
-    font-size: 12px;
-    font-family: Helvetica;
-    border-bottom: 1px;
-    display: flex;
-    flex-wrap: nowrap;
-}
-
-.mcomments {
-    width: 425px;
-    height: 84px;
-    display: flex;
-    align-self: center;
-    align-items: center;
-    border-bottom: 5px;
-    font-family: Helvetica;
-    font-size: 14px;
-}
-
-.userInfoContainer {
-    font-size: 12px; 
-    font-weight: 700;
-    margin-top: 10px;
-    margin-left: 15px;
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-}
-
-.userInfo {
-    width: 425px; 
-    height: 42px;
-    display: inline-flex;
-    justify-content: flex-start;
-    cursor: pointer;
-}
-
-.gallery {
-    width: 425px; 
-    height: 21px;
-    font-weight: 700;
-    font-size: 14px;
-    cursor: pointer;
-    font-family: Arial, Helvetica, sans-serif;
-    margin-left: 5px;
-    margin-top: 2px;
-}
-
-.report {
-    width: 425px; 
-    height: 21px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
-    font-size: 13px;
-    margin-left: 5px;
-    margin-top: 15px;
 }

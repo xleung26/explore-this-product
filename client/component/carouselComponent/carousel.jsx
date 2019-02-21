@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from '../explores/explores.css';
-import RightArrow from './exploreArrowRight.jsx';
-import LeftArrow from './exploreArrowLeft.jsx';
+import styles from './cstyles.css';
+import RightArrow from '../svgComponent/exploreArrowRight.jsx';
+import LeftArrow from '../svgComponent/exploreArrowLeft.jsx';
 import Toggle from './toggleButton.jsx';
 
 class Carousel extends React.Component {
@@ -18,31 +18,36 @@ class Carousel extends React.Component {
     this.handleToggle = this.handleToggle.bind(this);
   }
 
-  leftSlide () {
+  componentDidMount () {
+    this.setState({ translateValue: this.props.translateStart })
+  }
 
-    let x = (this.props.listLength - (this.props.listLength % 5)) / 5;
+  leftSlide () {
+    const { itemDisplay, imageSize, translateStart } = this.props
 
     if (this.state.currentIndex === 1 || this.state.currentIndex === 0){
-      this.setState({ translateValue: -25 }, () => {if (this.state.currentIndex !== 0) {this.setState((prevState) => ({ currentIndex: prevState.currentIndex -1 }))}})
+      this.setState({ translateValue: translateStart }, () => {if (this.state.currentIndex !== 0) {this.setState((prevState) => ({ currentIndex: prevState.currentIndex -1 }))}})
     }
     if ( (this.state.currentIndex > 0) && (this.state.currentIndex !== 1)) {
-      this.setState((prevState) => ({ currentIndex: prevState.currentIndex -1 }), () => this.setState({ translateValue: (this.state.currentIndex * 5 * -190) }))
+      this.setState((prevState) => ({ currentIndex: prevState.currentIndex -1 }), () => this.setState({ translateValue: (this.state.currentIndex * itemDisplay * imageSize) }))
     }
   }
 
   rightSlide () {
     
-    let x = (this.props.listLength - (this.props.listLength % 5)) / 5;
+    const { lists, listLength, itemDisplay, imageSize } = this.props
+
+    let x = (lists.length - (lists.length % itemDisplay)) / itemDisplay;
       
-      if ( (this.state.currentIndex <= (x-1)) && (this.props.listLength % 5 !== 0)) {
+      if ( (this.state.currentIndex <= (x-1)) && (listLength % itemDisplay !== 0)) {
         if (this.state.currentIndex < (x-1)){
-          this.setState({ translateValue: ((this.state.currentIndex + 1) * 5 * -190)}, () => {this.setState((prevState)=> ({ currentIndex: prevState.currentIndex + 1 }))})
+          this.setState({ translateValue: ((this.state.currentIndex + 1) * itemDisplay * imageSize)}, () => {this.setState((prevState)=> ({ currentIndex: prevState.currentIndex + 1 }))})
         } else if (this.state.currentIndex === (x-1)) {
-          this.setState({ translateValue: ( ((this.props.listLength % 5) + (5 * this.state.currentIndex)) * -190) }, () => {this.setState((prevState)=> ({ currentIndex: prevState.currentIndex + 1 }) )}) 
+          this.setState({ translateValue: ( ((listLength % itemDisplay) + (itemDisplay * this.state.currentIndex)) * imageSize) }, () => {this.setState((prevState)=> ({ currentIndex: prevState.currentIndex + 1 }) )}) 
         }
       } 
-      if ((this.state.currentIndex < (x-1)) && (this.props.listLength % 5 === 0)) {
-          this.setState({ translateValue: ((this.state.currentIndex + 1) * 5 * -189)}, () => {this.setState((prevState)=> ({ currentIndex: prevState.currentIndex + 1 }))})
+      if ((this.state.currentIndex < (x-1)) && (listLength % itemDisplay === 0)) {
+          this.setState({ translateValue: ((this.state.currentIndex + 1) * itemDisplay * imageSize)}, () => {this.setState((prevState)=> ({ currentIndex: prevState.currentIndex + 1 }))})
       }
   }
 
@@ -57,10 +62,12 @@ class Carousel extends React.Component {
   }
 
   render () {
-
-    let x = (this.props.listLength - (this.props.listLength % 5)) / 5;
+    const { lists, itemDisplay, compCarouselStyles } = this.props
+    
+    let x = (lists.length - (lists.length % itemDisplay)) / itemDisplay;
+    
     let y;
-    if (this.props.listLength % 5 !== 0){
+    if (lists.length % itemDisplay !== 0){
       y = x+ 1;
     } else {
       y= x;
@@ -68,24 +75,30 @@ class Carousel extends React.Component {
 
     return (
       <div>  
-        <div className={styles.innercontainer}>
+        <div className={compCarouselStyles.innercontainer}>
           <LeftArrow 
-          leftSlide={this.leftSlide} 
+          leftSlide={this.leftSlide}
+          compCarouselStyles={compCarouselStyles} 
+          currentIndex = {this.state.currentIndex}
           />
-            <div className={styles.flexContainer}>
-            {this.props.lists.map( (list, key) => {
+            <div className={compCarouselStyles.flexContainer}>
+            {lists.map( (list, index) => {
             return <this.props.component 
-            key={key} 
+            updateModalIndex={this.props.updateModalIndex}
+            id={index} 
             list={list} 
-            modalGet={this.props.modalGet} 
             translateValue={this.state.translateValue} 
+            title = {this.props.title}
             />})}
             </div>
           <RightArrow 
-          rightSlide={this.rightSlide} 
+          rightSlide={this.rightSlide}
+          compCarouselStyles={compCarouselStyles}
+          currentIndex = {this.state.currentIndex}
+          numberOfSlide = {y} 
           />
         </div>
-        <div className={styles.toggleContainer}>
+        <div className={compCarouselStyles.toggleContainer}>
             {
               [...Array(y).keys()].map((id, key) => { 
               return <Toggle 

@@ -8,8 +8,12 @@ const App = () => {
     return (
         <div>
             <Explores />
-            <Videos />
-            <Articles />
+            <div style={{display: 'flex', justifyContent: 'center'}} >
+                <div style={{ width:'1076px', height: '316px', display: 'flex', flexWrap: 'nowrap', marginTop: '50px', justifyContent: 'space-between', alignSelf: 'center' }}>
+                    <Videos />
+                    <Articles />
+                </div>
+            </div>
         </div>
     )
 }

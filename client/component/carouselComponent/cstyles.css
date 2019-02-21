@@ -1,0 +1,36 @@
+/* 
+carousel css
+---------------------------------------------------------> */
+.innercontainer {
+  width: 980px;
+  height:198px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.flexContainer {
+  width: 916px;
+  height: 198px;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  align-content: flex-start;
+
+}
+
+.toggleButton {
+  width: 10px;
+  height: 10px;
+  /* background-color: rgb(204, 204, 204); */
+  /* background-color: rgb(0, 0, 0); */
+  border-radius: 99999px;
+  cursor: pointer;
+  margin: 3px;
+  z-index: 0;
+}

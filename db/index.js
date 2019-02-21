@@ -13,13 +13,14 @@ const exploresSchema = new mongoose.Schema({
 
 const videosSchema = new mongoose.Schema({
   productId: {type: Number, unique: true},
-  video: {type: String, unique: true},
+  video: {type: Array, unique: true},
   videoTitle: {type: String, unique: true}
 })
 
 const articlesSchema = new mongoose.Schema({
   productId: {type: Number, unique: true},
-  image: {type: String, unique: true}
+  image: {type: Array, unique: true}, 
+  articleTitle: {type: String, unique: true}
 })
 
 const Explores = mongoose.model('Explores', exploresSchema);
@@ -54,7 +55,8 @@ let saveArticle = (data) => {
   data.forEach(entry => {
     entry = new Articles({
       productId: entry.id,
-      image: entry.image
+      image: entry.image,
+      articleTitle: entry.title
     }).save()
     .then(() => {console.log('success in storing data into Ariticle table')})
     .catch(() => {console.log('failed to insert data into Article table')})
@@ -87,7 +89,7 @@ let fetchExplore = (id, callback) => {
 //   .catch(() => callback('err', null))
 // }
 
-let fetchArticle = (id) => {
+let fetchArticle = (id, callback) => {
   Articles.find({ productId: id })
   .then((data) => {
     console.log('success in fetchArticles')
@@ -99,13 +101,13 @@ let fetchArticle = (id) => {
   })  
 } 
 
-let fetchVideos = (id) => {
+let fetchVideos = (id, callback) => {
   Videos.find({ productId: id })
   .then((data) => {
     console.log('success in fetchVideos')
     callback(null, data);
   })
-  .catch(() => {
+  .catch((err) => {
     console.log('failure in fetchVideos')
     callback('err', null);
   })  
@@ -113,12 +115,12 @@ let fetchVideos = (id) => {
 
 function adjust (array, url) {
   for (let i = 0; i < array.length; i++) {
-    array[i].image = url;
+    array[i].image = url + (Math.floor(Math.random() * 1000));
   }
   return array;
 }
 
-let adjustedData = adjust(mockarooData.mockarooData, 'https://picsum.photos/420/420/?random')
+let adjustedData = adjust(mockarooData.mockarooData, 'https://picsum.photos/420/420/?image=')
 
 function formatData (array) {
   let newArr = [];
@@ -147,21 +149,29 @@ let dataArr = formatData(adjustedData);
 
 // console.log(dataArr[0])
 
-// for (let i = 1; i <= 100; i++) {
-// saveVideos([{
-//   id: i,
-//   video: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-//   videoTitle: 'Very funny bunny video'
-// }])
-// }
+for (let i = 1; i <= 100; i++) {
+  let storageArr = [];
+  for (let k = 0; k < Math.max(Math.floor(Math.random() * 10), 2); k++){
+    storageArr.push( 'https://picsum.photos/148/132/?image=' + (Math.floor(Math.random() * 1000)) )
+  }
 
-// for (let i = 1; i <= 100; i++) {
-//   saveArticle([{
-//     id: i, 
-//     image: 'https://picsum.photos/148/132/?random'
-//   }])
-// }
+  saveVideos([{
+    id: i,
+    video: storageArr,
+    videoTitle: 'Very funny bunny video'
+  }])
+}
 
-// saveExplore(dataArr);
+let articleArr = [];
+
+for (let i = 1; i <= 100; i++) {
+
+  articleArr.push( {id: i, image: 'https://picsum.photos/148/132/?image=' + (Math.floor(Math.random() * 1000)), title: "Dummy Title"} )
+  
+}
+
+saveArticle(articleArr)
+
+saveExplore(dataArr);
 
 module.exports = { exploresSchema, videosSchema, articlesSchema, saveExplore , saveArticle, saveVideos, fetchExplore, fetchArticle, fetchVideos };

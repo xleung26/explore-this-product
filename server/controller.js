@@ -9,31 +9,19 @@ module.exports = {
               if (err) {
                   res.status(404).send()
               } else {
-                  console.log(data[0].exploresLists)
                   res.status(200).send(data[0].exploresLists);
               }
           })
-      },
-
-    //   getid: (req, res) => {
-    //     const { id } = req.query;
-    //     db.fetchExploreId(id, (err, data) => {
-    //         if (err) {
-    //             res.status(404).send()
-    //         } else {
-    //             res.status(200).send(data);
-    //         }
-    //     })
-    //   }
+      }
   },
   videos: {
       get: (req, res) => {
+        let { id } = req.query;
         db.fetchVideos(id, (err, data) => {
               if (err) {
                   console.log('err in videos get')
                   res.status(404).send()
               } else {
-                  console.log('success in videos get')
                   res.status(200).send(data);
               }
           })
@@ -41,7 +29,8 @@ module.exports = {
   },
   articles: {
       get: (req, res) => {
-        db.saveArticle(id, (err, data) => {
+        const { id } = req.query;
+        db.fetchArticle(id, (err, data) => {
               if (err) {
                   console.log('err in articles get')
                   res.status(404).send()

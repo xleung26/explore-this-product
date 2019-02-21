@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../explores/explores.css';
+import styles from './svgstyles.css';
 
 const QuestionBubble = (props) => (
   <svg viewBox="0 0 32 32"

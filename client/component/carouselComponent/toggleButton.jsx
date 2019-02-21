@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../explores/explores.css';
+import styles from './cstyles.css';
 
 const Toggle = (props) => {
   let toggleColor ={

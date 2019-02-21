@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './explores.css'
+import styles from './mstyles.css'
 import sephoraAvatar from '../../../Assets/sephoraAvatar.svg';
 import HeartSVG from '../svgComponent/heart.jsx';
 import ShareSVG from '../svgComponent/share.jsx';
@@ -14,8 +14,11 @@ class Modal extends React.Component {
   }
 
   render () {
-    const showHideClassName = this.props.show? styles.modalDisplayBlock : styles.modalDisplayNone;
-
+    const showHideClassName = this.props.modalIndex !== null ? styles.modalDisplayBlock : styles.modalDisplayNone;
+    const info = this.props.lists[this.props.modalIndex];
+    if(this.props.modalIndex === null){
+      return <div/>;
+    }
     return (
       <div className={showHideClassName}>
         <section className={styles.modalMain}>
@@ -28,7 +31,7 @@ class Modal extends React.Component {
           <div style={{width: '913px', height: '461px'}}>
             <div className={styles.mmwrapper} >
               <div className={styles.mimageHolder} >
-                <img className={styles.mimg} src={this.props.info[0].image} />
+                <img className={styles.mimg} src={info.image} />
               </div>
 
               <div className={styles.minfoPanel} >
@@ -36,7 +39,7 @@ class Modal extends React.Component {
                   <div className={styles.userInfoPanel} >
                     <div className={styles.mimgDetailHead} >
                       <div className={styles.mheaderComment}>
-                        {this.props.info[0].headerComment}
+                        {info.headerComments}
                       </div>
                       <div className={styles.icons}>
 
@@ -48,17 +51,17 @@ class Modal extends React.Component {
                       </div>
                     </div>
                     <div className={styles.mgroupTime}>
-                      <div >in <span style={{ fontWeight: 'bold' }}>{" " + this.props.info[0].productBrand}</span> | </div>
-                      <div>{this.props.info[0].date.slice(0,7)}</div>
+                      <div >in <span style={{ fontWeight: 'bold' }}>{" " + info.productBrand}</span> | </div>
+                      <div>{info.date.slice(0,7)}</div>
                     </div><br/>
-                    <div className={styles.mcomments} >{this.props.info[0].comments}</div>
+                    <div className={styles.mcomments} >{info.comments}</div>
                   </div>
                   <div className={styles.userInfo}>
                     <div style={{ cursor: 'pointer' }}>
                       <img src={sephoraAvatar} />
                     </div>
                     <div className={styles.userInfoContainer}>
-                      <div >{this.props.info[0].user}</div>
+                      <div className={styles.exploresUser} >{info.user}</div>
                       <div style={{ display: 'flex', flexWrap: 'nowrap'}}>
                         <div>
                           <img className={styles.sephoraBrand} src="https://photorankstatics-a.akamaihd.net/static/frontend/sephora-js/assets/img/og-badge-sephora_brand.png" />
@@ -73,9 +76,8 @@ class Modal extends React.Component {
                   <div className={styles.gallery} >
                     See this look in the Gallery >
                   </div>
-                  <div className={styles.report} >
-                    <a href='#'>Report</a>
-                  </div>
+                  <span className={styles.report} >Report
+                  </span>
 
               </div>
 

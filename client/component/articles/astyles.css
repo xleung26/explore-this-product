@@ -1,0 +1,41 @@
+
+.outerContainer {
+  width: 384px; 
+  height: 174px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 20px;
+  align-content: space-around;
+}
+
+.h0 {
+  width: 548px; 
+  height: 20px;
+  margin-bottom: 20px;
+}
+
+.headerText {
+  font-weight: bold;
+  font-size: 16px;
+  font-family: Helvetica;
+  margin-bottom: 20px;
+}
+
+.articlesImage {
+  width: 148px; 
+  height: 138px;
+  margin-left: 30px;
+  cursor: pointer;
+}
+
+.articlesTitle {
+  margin-left: 30px;
+  font-size: 14px;
+  font-family: Helvetica; 
+  cursor: pointer;
+}
+
+.hoverDiv:hover .articlesTitle {
+  text-decoration: underline;
+}

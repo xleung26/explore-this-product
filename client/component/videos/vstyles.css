@@ -1,0 +1,92 @@
+.outerContainer {
+  width: 548px; 
+  height: 209px;
+  margin-left: 50px;
+}
+
+.h0 {
+  width: 548px; 
+  height: 20px;
+  display: flex;
+}
+
+.headerText {
+  font-weight: bold;
+  font-size: 16px;
+  font-family: Helvetica;
+}
+
+/* carousel -----------------_>*/
+
+.carouselContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-self: flex-start;
+}
+
+.innercontainer {
+  width: 550px;
+  height: 132px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.flexContainer {
+  width: 548px;
+  height: 209px;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.toggleContainer {
+  width: 548px;
+  height: 10px;
+  display: flex; 
+  flex-wrap: nowrap; 
+  justify-content: center;
+  align-content: flex-end;
+  margin-top: 65px;
+}
+
+.videoItem {
+  width: 234px;
+  height: 132px;
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-top: 23px;
+  z-index: -1;
+}
+
+.videoTitle {
+  margin-left: 10px;
+  font-size: 14px;
+  font-family: Helvetica; 
+}
+
+.videoTitleContainer {
+  width: 234px;
+  height: 51px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.arrButton {
+  display: inline-flex;
+  align-self: flex-start;
+  width: 32px;
+  height: 132px;
+  vertical-align: middle;
+  margin-top: 23px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}

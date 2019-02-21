@@ -4,7 +4,7 @@ import styles from './explores.css';
 import beautyMatch from '../../../Assets/BeautyMatchIcon.png';
 import ExploresList from './exploresList.jsx';
 import Carousel from '../carouselComponent/carousel.jsx';
-import Modal from './Modal.jsx';
+import Modal from '../modal/Modal.jsx';
 import Checkbox from '../svgComponent/checkbox.jsx';
 import QuestionBubble from '../svgComponent/questionBubble.jsx';
 
@@ -22,27 +22,16 @@ class Explores extends React.Component {
       date: "",
       productBrand: ""
     }],
-    modalShow: null,
-    modalInfo: [{
-      myid: "",
-      user: "",
-      image: "",
-      headerComment : "",
-      comments: "",
-      date: "",
-      productBrand: ""
-    }]
+    modalIndex: null
   }
 
     this.fetchData = this.fetchData.bind(this);
-    this.openModal = this.openModal.bind(this);
-    this.modalGet = this.modalGet.bind(this);
+    this.updateModalIndex = this.updateModalIndex.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
 
   componentDidMount () {
     let random = (Math.floor(Math.random() * 100));
-    console.log(random);
     this.fetchData(random)
   }
 
@@ -50,27 +39,18 @@ class Explores extends React.Component {
     axios 
       .get('/explores', {params: { id: random}})
       .then((data) => {
-        console.log(data)
         this.setState({ lists: data.data })
         })
       .catch((err) => {console.log(err)})
   }
 
-  openModal () {
-   this.setState({ modalShow: true })
+  updateModalIndex(index){
+    this.setState({modalIndex: index});
   }
 
   closeModal () {
-    this.setState({ modalShow: null })
+    this.setState({ modalIndex: null })
   }
-
-  modalGet (value) {
-    axios
-      .get(`/explores/id`, {params: {id: value}})
-      .then((data) => {this.setState({ modalInfo: data.data}, () => {this.openModal()})})
-      .catch(() => {console.log('failed to get id')})
-  }
-
 
   render () {
     return (
@@ -78,28 +58,32 @@ class Explores extends React.Component {
         <div className={styles.head0} >Explore This Product</div>
       <div className={styles.container}>
         <div className={styles.head1}>
-          <div className={styles.looks}>Looks {this.state.lists.length}</div>
-          <div style={{ width: '18px', height: '18px', margin: '3px'}}>
+          <div className={styles.looks}>Looks {'(' + this.state.lists.length + ')'}</div>
+          <div style={{ width: '18px', height: '18px', alignSelf: 'center'}}>
             <Checkbox />
           </div> 
-          <span className={styles.showLooks} >Show looks from my</span> 
+          <div className={styles.showLooks} >Show looks from my</div> 
           <img className={styles.beautyMatch} src={beautyMatch} />
           <div style={{ width: '18px', height: '18px', margin: '3px', alignSelf: 'center' }}>
-            <QuestionBubble />            
+            <QuestionBubble />
           </div>
         </div>
         <div className={styles.carouselContainer} >
           <Carousel
+          updateModalIndex={this.updateModalIndex}
           lists={this.state.lists}
           component={ExploresList}
-          modalGet={this.modalGet}
           listLength={this.state.lists.length}
+          itemDisplay = { 5 }
+          compCarouselStyles= {styles}
+          imageSize = { -190 }
+          translateStart = { -25 }
           />  
         </div>
       </div>
       <Modal 
-      show={this.state.modalShow}
-      info={this.state.modalInfo} 
+      lists={this.state.lists}
+      modalIndex={this.state.modalIndex} 
       hideModal={this.closeModal} 
       />
       {this.state.currentIndex}

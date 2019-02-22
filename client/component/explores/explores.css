@@ -1,0 +1,145 @@
+/* body:not(.loaded) #slider img {
+    display:none;
+} */
+/* https://stackoverflow.com/questions/7411541/how-to-prevent-the-white-flash-on-page-load-created-by-background-image-loadin */
+
+/* 
+explores css
+---------------------------------------------------------> */
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+.exploreContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 5px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 980px;
+    height: 242px;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+
+.head0 {
+    width: 980px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    font-family: Georgia;
+    font-size: 24px;
+    margin: 25px;
+}
+
+.head1 {
+    width: 980px;
+    height: 13px;
+    display: flex;
+    /* flex-wrap: nowrap; */
+    justify-content: flex-start;
+}
+
+.looks {
+    font-weight: bold;
+    font-size: 16px;
+    font-family: Helvetica;
+}
+
+
+.showLooks {
+    font-size: 14px;
+    font-family: Helvetica; 
+    margin-left: 30px;
+}
+
+.beautyMatch {
+    width: 138px;
+    height: 25px;
+    margin-left: 10px;
+    align-self: center;
+    margin-top: 3px;
+    cursor: pointer;
+}
+
+/* carousel css */
+.carouselContainer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    align-self: center;
+}
+
+.innercontainer {
+    width: 980px;
+    height:198px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+  }
+  
+.flexContainer {
+    width: 916px;
+    height: 198px;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+
+.toggleContainer {
+    width: 980px;
+    height: 10px;
+    display: flex; 
+    flex-wrap: nowrap; 
+    justify-content: center;
+    align-content: flex-end;
+    margin-top: 24px;
+  }
+
+.arrButton {
+    display: inline-flex;
+    align-self: flex-start;
+    width: 32px;
+    height: 164px;
+    vertical-align: middle;
+    margin-top: 23px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}  
+
+/* 
+exploresList css
+---------------------------------------------------------> */
+
+.listbutton {
+    width: 164px;
+    height: 164px;
+    margin: 12px;
+    cursor: pointer;
+}
+
+.listbutton:hover {
+    opacity: 0.5;
+}
+
+.imgs {
+    display: inline;
+    width: 164px;
+    height: 164px;
+    margin: 12px;
+    vertical-align: center;
+}

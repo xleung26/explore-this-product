@@ -1,0 +1,105 @@
+
+/* explores ------------------------------------------------------> */
+.checkBox {
+  width: 15px;
+  height: 15px;
+  border-radius: 4px;
+  border-width: 2px;
+  border-color: rgb(0, 0, 0);
+  margin: 2px 15px;
+  margin-right: 20px;
+  fill: rgb(255, 255, 255);
+  border: solid;
+  cursor: pointer;
+}
+
+.questionBubble {
+  display: inline-block;
+  align-self: center;
+  height: 1em;
+  fill: rgb(204, 204, 204);
+  position: relative;
+  vertical-align: text-bottom;
+  width: 1em;
+  margin: 3px;
+  margin-top: 5px;
+}
+
+.questionBubble:hover {
+  fill: rgb(0, 0, 0);
+}
+
+/* carousel ------------------------------------------------------> */
+
+.arrows {
+  display: inline-flex; 
+  flex-direction: row;
+  width: 18px;
+  height: 36px;
+  vertical-align: middle;
+  margin: auto;
+  outline: none;
+  cursor: pointer;
+}
+
+.arrows:hover {
+  fill: rgb(102, 102, 102);
+}
+
+/* .arrows:disabled {
+  fill: rgb(238, 238, 238);
+} */
+
+
+/* modal ------------------------------------------------------> */
+
+.mx {
+  display: inline-block;
+  height: 1em;
+  fill: currentColor;
+  position: relative;
+  vertical-align: text-bottom;
+  width: 1em;
+  -webkit-transition: -webkit-transform .2s;
+  -webkit-transition: transform .2s;
+  transition: transform .2s;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.mshare {
+  display: flex;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+.heart {
+  display: flex;
+  height: 1em;
+  fill: currentColor;
+  position: relative;
+  vertical-align: text-bottom;
+  width: 1.25em;
+  margin-right: 5px;
+  margin-top: 3px;
+}
+
+.heart:hover {
+  fill: red;
+}
+
+/* videos -------------------------------------------------------> */
+
+.videoPlayerButton {
+  fill: rgb(255, 255, 255);
+  height: 53px;
+  width: 53px;
+  z-index: 1;
+  position: fixed;
+  align-self: center;
+  margin-left: 100px;
+  margin-top: 60px;
+}

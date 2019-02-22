@@ -59,8 +59,8 @@ class Videos extends React.Component {
               listLength={this.state.lists[0].video.length}
               itemDisplay = { 2 }
               compCarouselStyles= {styles}
-              imageSize = { -250 }
-              translateStart = { -10 }              
+              imageSize = { -258 }
+              translateStart = { -15 }              
               />
             </div>
             <VideoModal 

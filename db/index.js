@@ -152,13 +152,13 @@ let dataArr = formatData(adjustedData);
 for (let i = 1; i <= 100; i++) {
   let storageArr = [];
   for (let k = 0; k < Math.max(Math.floor(Math.random() * 10), 2); k++){
-    storageArr.push( 'https://picsum.photos/148/132/?image=' + (Math.floor(Math.random() * 1000)) )
+    storageArr.push( "https://www.youtube.com/embed/jI1jswMZB3E" )
   }
 
   saveVideos([{
     id: i,
     video: storageArr,
-    videoTitle: 'Very funny bunny video'
+    videoTitle: 'Get Unready With Me: Anti Aging Routine for Dry Skin'
   }])
 }
 

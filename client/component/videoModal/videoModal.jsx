@@ -27,7 +27,7 @@ class VideoModal extends React.Component {
             </div>
           </div>
             <div className={styles.mimageHolder} >
-              <img className={styles.mimg} src={info} />
+              <iframe className={styles.mimg} src={info}></iframe>
             </div>
         </section>
       </div>

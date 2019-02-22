@@ -13,11 +13,11 @@ app.use(parser.urlencoded({extended: true}));
 
 app.use(express.static(path.resolve(__dirname, '../public')));
 
-app.get('/explores', controller.explores.get);
+app.get('/explores/:id', controller.explores.get);
 // app.get('/explores/id', controller.explores.getid);
 
-app.get('/videos', controller.videos.get);
+// app.get('/videos', controller.videos.get);
 
-app.get('/articles', controller.articles.get);
+// app.get('/articles', controller.articles.get);
 
 app.listen(PORT, () => console.log('the server is listening on ', PORT));

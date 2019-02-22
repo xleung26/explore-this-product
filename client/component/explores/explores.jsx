@@ -7,6 +7,8 @@ import Carousel from '../carouselComponent/carousel.jsx';
 import Modal from '../modal/Modal.jsx';
 import Checkbox from '../svgComponent/checkbox.jsx';
 import QuestionBubble from '../svgComponent/questionBubble.jsx';
+import Videos from '../videos/videos.jsx';
+import Articles from '../articles/articles.jsx';
 
 class Explores extends React.Component {
   constructor(props) {
@@ -14,34 +16,28 @@ class Explores extends React.Component {
 
   this.state = {
     lists: [{
-      myid: "",
-      user: "",
-      image: "",
-      headerComment : "",
-      comments: "",
-      date: "",
-      productBrand: ""
+      exploresLists: "",
+      videosLists: "",
+      articlesLists: ""
     }],
     modalIndex: null
   }
 
-    this.fetchData = this.fetchData.bind(this);
     this.updateModalIndex = this.updateModalIndex.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
 
   componentDidMount () {
-    let random = (Math.floor(Math.random() * 100));
-    this.fetchData(random)
+    this.fetchData()
   }
 
-  fetchData (random) {
+  fetchData () {
     axios 
-      .get('/explores', {params: { id: random}})
-      .then((data) => {
-        this.setState({ lists: data.data })
-        })
-      .catch((err) => {console.log(err)})
+    .get('/explores/')
+    .then((data) => {
+      this.setState({ lists: data.data })
+      })
+    .catch((err) => {console.log(err)})
   }
 
   updateModalIndex(index){
@@ -53,12 +49,16 @@ class Explores extends React.Component {
   }
 
   render () {
+    console.log(this.state.lists[0].videosLists);
+
     return (
+    <div>
+      {(this.state.lists[0].exploresLists === "")?<div></div>:
     <div className={styles.exploreContainer} >
         <div className={styles.head0} >Explore This Product</div>
       <div className={styles.container}>
         <div className={styles.head1}>
-          <div className={styles.looks}>Looks {'(' + this.state.lists.length + ')'}</div>
+          <div className={styles.looks}>Looks {'(' + this.state.lists[0].exploresLists.length + ')'}</div>
           <div style={{ width: '18px', height: '18px', alignSelf: 'center'}}>
             <Checkbox />
           </div> 
@@ -71,9 +71,9 @@ class Explores extends React.Component {
         <div className={styles.carouselContainer} >
           <Carousel
           updateModalIndex={this.updateModalIndex}
-          lists={this.state.lists}
+          lists={this.state.lists[0].exploresLists}
           component={ExploresList}
-          listLength={this.state.lists.length}
+          listLength={this.state.lists[0].exploresLists.length}
           itemDisplay = { 5 }
           compCarouselStyles= {styles}
           imageSize = { -190 }
@@ -82,12 +82,19 @@ class Explores extends React.Component {
         </div>
       </div>
       <Modal 
-      lists={this.state.lists}
+      lists={this.state.lists[0].exploresLists}
       modalIndex={this.state.modalIndex} 
       hideModal={this.closeModal} 
       />
-      {this.state.currentIndex}
+      <div style={{display: 'flex', justifyContent: 'center'}} >
+        <div style={{ width:'1076px', height: '316px', display: 'flex', flexWrap: 'nowrap', marginTop: '50px', justifyContent: 'space-between', alignSelf: 'center' }}>
+          <Videos lists={this.state.lists[0].videosLists} />
+          <Articles lists={this.state.lists[0].articlesLists}/>
+        </div>
+      </div>
     </div>
+      }
+    </div>  
     )
   }
 }

@@ -7,47 +7,35 @@ class Articles extends React.Component {
         super(props)
 
         this.state ={
-            lists: [{
-                image: "",
-                articleTitle: ""
-            }],
             hoverOver: false
         }
-        this.fetchArticles = this.fetchArticles.bind(this)
-    }
 
-    componentDidMount () {
-        let random = (Math.floor(Math.random() * 100));
-        this.fetchArticles(random)
-      }
-    
-    fetchArticles (random) {
-    console.log(random)
-    axios
-        .get('/articles', { params: { id: random } })
-        .then((data) => {
-        console.log(data.data) 
-        this.setState({ lists: data.data}) 
-        })
-        .catch((err) => {console.log('err')})
     }
 
     render () {
 
         return (
-            <div className={styles.outerContainer} >
+
+            <div>
+                {
+                    (this.props.lists === "")?<div></div>:
+                    <div className={styles.outerContainer} >
               <div className={styles.h0} >
-                <div className={styles.headerText} >Articles {'(' + this.state.lists[0].image.length + ')'}</div>
+                <div className={styles.headerText} >Articles {'(' + this.props.lists[0].image.length + ')'}</div>
                 
                 <div className={styles.hoverDiv} >              
                     <div  >
-                        <img className={styles.articlesImage} src={this.state.lists[0].image} />
+                        <img className={styles.articlesImage} src={this.props.lists[0].image} />
                     </div>
-                    <div className={styles.articlesTitle} >{this.state.lists[0].articleTitle}</div>
+                    <div className={styles.articlesTitle} >{this.props.lists[0].title}</div>
                 </div>
               
               </div>  
             </div>
+                }
+            </div>
+
+            
           )
     }
 }

@@ -85,6 +85,7 @@ class Carousel extends React.Component {
             {lists.map( (list, index) => {
             return <this.props.component 
             updateModalIndex={this.props.updateModalIndex}
+            key={index}
             id={index} 
             list={list} 
             translateValue={this.state.translateValue} 

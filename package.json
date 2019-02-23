@@ -28,6 +28,7 @@
     "file-loader": "^3.0.1",
     "jquery": "^3.3.1",
     "mongoose": "^5.4.10",
+    "morgan": "^1.9.1",
     "nodemon": "^1.18.9",
     "react": "^16.8.1",
     "react-dom": "^16.8.1"

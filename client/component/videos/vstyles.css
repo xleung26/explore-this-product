@@ -75,6 +75,7 @@
   margin-right: 8px;
   margin-top: 23px;
   z-index: -1;
+  min-width: auto;
 }
 
 .videoTitle {

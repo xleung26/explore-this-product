@@ -130,6 +130,7 @@ exploresList css
     height: 164px;
     margin: 12px;
     cursor: pointer;
+    min-width: auto;
 }
 
 .listbutton:hover {

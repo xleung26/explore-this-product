@@ -12,6 +12,18 @@ explores css
     background: transparent;
 }
 
+.topDivider {
+    display: block;
+    color: #eee;
+    margin-bottom: 24px;
+    margin-top: 24px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    width: 980px;
+    margin: auto;
+    margin-top: 50px;
+}
+
 .exploreContainer {
     display: flex;
     justify-content: center;
@@ -37,6 +49,7 @@ explores css
     font-family: Georgia;
     font-size: 24px;
     margin: 25px;
+    margin-bottom: 40px;
 }
 
 .head1 {
@@ -57,7 +70,7 @@ explores css
 .showLooks {
     font-size: 14px;
     font-family: Helvetica; 
-    margin-left: 30px;
+    margin-left: 40px;
 }
 
 .beautyMatch {
@@ -106,7 +119,7 @@ explores css
     flex-wrap: nowrap; 
     justify-content: center;
     align-content: flex-end;
-    margin-top: 24px;
+    margin-top: 8px;
   }
 
 .arrButton {

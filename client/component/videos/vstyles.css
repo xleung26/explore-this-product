@@ -87,6 +87,14 @@
   white-space: normal;
 }
 
+.toggleContainer {
+  /* display: flex; 
+  flex-wrap: nowrap; 
+  justify-content: center;
+  align-content: flex-end; */
+  margin-top: 85px;
+}
+
 .arrButton {
   display: inline-flex;
   align-self: flex-start;

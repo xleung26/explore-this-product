@@ -8,8 +8,8 @@
   border-color: rgb(0, 0, 0);
   margin: 2px 15px;
   margin-right: 20px;
-  fill: rgb(255, 255, 255);
-  border: solid;
+  margin-left: 30px;
+  border: solid 2px;
   cursor: pointer;
 }
 

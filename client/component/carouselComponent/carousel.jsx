@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './cstyles.css';
 import RightArrow from '../svgComponent/exploreArrowRight.jsx';
 import LeftArrow from '../svgComponent/exploreArrowLeft.jsx';
 import Toggle from './toggleButton.jsx';

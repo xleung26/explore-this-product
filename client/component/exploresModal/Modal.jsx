@@ -16,12 +16,12 @@ class Modal extends React.Component {
   render () {
     const showHideClassName = this.props.modalIndex !== null ? styles.modalDisplayBlock : styles.modalDisplayNone;
     const info = this.props.lists[this.props.modalIndex];
-    if(this.props.modalIndex === null){
+    if (this.props.modalIndex === null) {
       return <div/>;
     }
     return (
-      <div className={showHideClassName}>
-        <section className={styles.modalMain}>
+      <div className={showHideClassName} onClick={this.props.hideModal} >
+        <section onClick={(e) => { e.stopPropagation() }} className={styles.modalMain}>
           <div className={styles.lightBoxHeader} >
             <span className={styles.mLooks} >Look info</span>
             <div onClick={this.props.hideModal} className={styles.close} >
@@ -58,7 +58,7 @@ class Modal extends React.Component {
                   </div>
                   <div className={styles.userInfo}>
                     <div style={{ cursor: 'pointer' }}>
-                      <img src={sephoraAvatar} />
+                      <img src={`https://s3-us-west-1.amazonaws.com/sephoraimage/sephoraAvatar.svg`} />
                     </div>
                     <div className={styles.userInfoContainer}>
                       <div className={styles.exploresUser} >{info.user}</div>

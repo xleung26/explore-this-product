@@ -1,10 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import styles from './explores.css';
-import beautyMatch from '../../../Assets/BeautyMatchIcon.png';
 import ExploresList from './exploresList.jsx';
 import Carousel from '../carouselComponent/carousel.jsx';
-import Modal from '../modal/Modal.jsx';
+import Modal from '../exploresModal/Modal.jsx';
 import Checkbox from '../svgComponent/checkbox.jsx';
 import QuestionBubble from '../svgComponent/questionBubble.jsx';
 import Videos from '../videos/videos.jsx';
@@ -22,11 +21,13 @@ class Explores extends React.Component {
           articlesLists: ''
         }
       ],
-      modalIndex: null
+      modalIndex: null,
+      checkedBox: false
     };
 
     this.updateModalIndex = this.updateModalIndex.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.checkBox = this.checkBox.bind(this);
   }
 
   componentDidMount() {
@@ -52,11 +53,15 @@ class Explores extends React.Component {
     this.setState({ modalIndex: null });
   }
 
+  checkBox () {
+    this.setState({ checkedBox: !this.state.checkedBox })
+  }
+
   render() {
-    console.log(this.state.lists[0].videosLists);
 
     return (
       <div>
+        <div className={styles.topDivider} ></div>
         {this.state.lists[0].exploresLists === '' ? (
           <div />
         ) : (
@@ -70,10 +75,13 @@ class Explores extends React.Component {
                 <div
                   style={{ width: '18px', height: '18px', alignSelf: 'center' }}
                 >
-                  <Checkbox />
+                  <Checkbox 
+                  checkBox={this.checkBox}
+                  checkedBox={this.state.checkedBox}
+                  />
                 </div>
                 <div className={styles.showLooks}>Show looks from my</div>
-                <img className={styles.beautyMatch} src={beautyMatch} />
+                <img className={styles.beautyMatch} src={`https://s3-us-west-1.amazonaws.com/sephoraimage/BeautyMatchIcon.png`} />
                 <div
                   style={{
                     width: '18px',
@@ -93,7 +101,7 @@ class Explores extends React.Component {
                   listLength={this.state.lists[0].exploresLists.length}
                   itemDisplay={5}
                   compCarouselStyles={styles}
-                  imageSize={-190}
+                  imageSize={-189.5}
                   translateStart={-25}
                 />
               </div>
@@ -110,7 +118,7 @@ class Explores extends React.Component {
                   height: '316px',
                   display: 'flex',
                   flexWrap: 'nowrap',
-                  marginTop: '50px',
+                  marginTop: '35px',
                   justifyContent: 'space-between',
                   alignSelf: 'center'
                 }}
@@ -121,6 +129,7 @@ class Explores extends React.Component {
             </div>
           </div>
         )}
+        <div className={styles.topDivider} ></div>
       </div>
     );
   }

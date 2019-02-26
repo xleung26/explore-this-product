@@ -31,15 +31,14 @@ class Videos extends React.Component {
         {(this.props.lists === "")? <div></div>:
       <div className={styles.outerContainer} >
       <div className={styles.h0} >
-        <div className={styles.headerText} >Videos {'(' + this.props.lists[0].videosList.length + ')'}</div>
+        <div className={styles.headerText} >Videos {'(' + this.props.lists.length + ')'}</div>
       </div>  
           <div className={styles.carouselContainer} >
             <Carousel 
             updateModalIndex={this.updateModalIndex}
-            lists={this.props.lists[0].videosList}
-            title={this.props.lists[0].videoTitle}
+            lists={this.props.lists}
             component={VideoItems}
-            listLength={this.props.lists[0].videosList.length}
+            listLength={this.props.lists.length}
             itemDisplay = { 2 }
             compCarouselStyles= {styles}
             imageSize = { -255 }
@@ -47,8 +46,7 @@ class Videos extends React.Component {
             />
           </div>
           <VideoModal 
-          lists={this.props.lists[0].videosList}
-          title={this.props.lists[0].videoTitle}
+          lists={this.props.lists}
           modalIndex={this.state.modalIndex} 
           hideModal={this.closeModal} 
           />

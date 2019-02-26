@@ -20,13 +20,13 @@ class VideoModal extends React.Component {
       <div onClick={this.props.hideModal} className={showHideClassName}>
         <section onClick={(e) => { e.stopPropagation() }} className={styles.modalMain}>
           <div className={styles.lightBoxHeader} >
-            <span className={styles.mLooks} >{this.props.title}</span>
+            <span className={styles.mLooks} >{info.videoTitle}</span>
             <div onClick={this.props.hideModal} className={styles.close} >
                 <CloseModalSVG />
             </div>
           </div>
             <div className={styles.mimageHolder} >
-              <iframe className={styles.mimg} src={info}></iframe>
+              <iframe className={styles.mimg} src={info.videosList}></iframe>
             </div>
         </section>
       </div>

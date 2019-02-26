@@ -24,7 +24,7 @@ class Explores extends React.Component {
       modalIndex: null,
       checkedBox: false
     };
-
+    this.fetchData =this.fetchData.bind(this);
     this.updateModalIndex = this.updateModalIndex.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.checkBox = this.checkBox.bind(this);
@@ -36,9 +36,9 @@ class Explores extends React.Component {
 
   fetchData() {
     axios
-      .get('/explores')
-      .then(data => {
-        this.setState({ lists: data.data });
+      .get('/explores/10')
+      .then((data) => {
+        this.setState({ lists: data.data }, () => {console.log(this.state.lists)})
       })
       .catch(err => {
         console.log(err);

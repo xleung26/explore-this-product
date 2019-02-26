@@ -88,7 +88,7 @@ class Carousel extends React.Component {
             id={index} 
             list={list} 
             translateValue={this.state.translateValue} 
-            title = {this.props.title}
+            // title = {this.props.title}
             />})}
             </div>
           <RightArrow 

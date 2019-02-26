@@ -4,7 +4,6 @@ module.exports = {
   explores: {
       get: (req, res) => {
         let { id } = req.params;
-        
         db.fetchExplore(id, (err, data) => {
               if (err) {
                   res.status(404).send()

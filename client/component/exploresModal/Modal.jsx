@@ -52,7 +52,7 @@ class Modal extends React.Component {
                     </div>
                     <div className={styles.mgroupTime}>
                       <div >in <span style={{ fontWeight: 'bold' }}>{" " + info.productBrand}</span> | </div>
-                      <div>{info.date.slice(0,7)}</div>
+                      <div style={{marginLeft: '5px'}} >{info.date}</div>
                     </div><br/>
                     <div className={styles.mcomments} >{info.comments}</div>
                   </div>

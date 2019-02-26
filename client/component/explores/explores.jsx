@@ -36,7 +36,7 @@ class Explores extends React.Component {
 
   fetchData() {
     axios
-      .get('/explores/10')
+      .get('/explores')
       .then((data) => {
         this.setState({ lists: data.data }, () => {console.log(this.state.lists)})
       })

@@ -1,0 +1,64 @@
+.productItemBox {
+    width: 130px; 
+    height: 190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    margin-left: 25px;
+}
+
+.productItemBox:hover {
+    opacity: 0.5;
+}
+
+.productImg { 
+    width: 100px; 
+    height: 100px;
+    align-self: center;
+}
+
+.productNames {
+    display: block;
+    width: 130px;
+    color: #000;
+    text-decoration: none;
+    text-align: center;
+    font-size: 13px;
+    letter-spacing: .32px;
+    word-break: break-word;
+    white-space: normal;
+    font-weight: 600;
+    font-family: "helvetica neue",helvetica,arial,sans-serif;
+}
+
+.prodDesc {
+    display: block;
+    width: 130px;
+    color: #000;
+    text-decoration: none;
+    text-align: center;
+    font-size: 13px;
+    letter-spacing: .32px;
+    word-break: break-word;
+    white-space: normal;
+    font-family: "helvetica neue",helvetica,arial,sans-serif;
+}
+
+.prodPrice {
+    font-weight: 600;
+    font-size: 14px;
+    display: block;
+    width: 130px;
+    color: #000;
+    text-decoration: none;
+    text-align: center;
+    font-size: 13px;
+    letter-spacing: .32px;
+    word-break: break-word;
+    white-space: normal;
+    align-self: flex-end center;
+    font-family: "helvetica neue",helvetica,arial,sans-serif;
+    font-size: 14px;
+    margin-top: 5px;
+}

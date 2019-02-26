@@ -110,12 +110,13 @@ class Explores extends React.Component {
               lists={this.state.lists[0].exploresLists}
               modalIndex={this.state.modalIndex}
               hideModal={this.closeModal}
+              innerCarouselLists={this.state.lists[0].innerCarousel}
             />
             <div style={{ display: 'flex', justifyContent: 'center' }}>
               <div
                 style={{
                   width: '1076px',
-                  height: '316px',
+                  height: '250px',
                   display: 'flex',
                   flexWrap: 'nowrap',
                   marginTop: '35px',
@@ -129,7 +130,6 @@ class Explores extends React.Component {
             </div>
           </div>
         )}
-        <div className={styles.topDivider} ></div>
       </div>
     );
   }

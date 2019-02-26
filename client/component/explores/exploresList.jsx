@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './explores.css'
-// import Modal from './Modal.jsx'
 
 class ExploresList extends React.Component {
   constructor(props) {

@@ -76,7 +76,25 @@ const youtubeThumbnail = [
 
 const month = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ]
 
-const dates = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+const productNames = ['CAUDALIE', 'ANASTASIA BEVERLY HILLS', 'URBAN DECAY', 'SMASHBOX', 'URBAN DECAY', 'SEPHORA COLLECTION', 'TARTE', 'SKIN LAUNDRY', 'IT COSMETICS', 'DIOR', 'MILKL MAKEUP', 'MARC JACOBS BEAUTY', 'LIVING PROOF', 'KAT VON D', 'LAURA MERCIER', 'BOOBI BROWN', 'BENEFIT COSMETICS', 'MAISON MARGIELA', 'LAURA MERCIER', 'MAC COSMETICS' ]
 
-module.exports = { articlesImage, exploresImage, youtubeVideo, youtubeThumbnail, month, dates }
+const productImg = [
+    'https://s3-us-west-1.amazonaws.com/ho-fec-similar/s1217710-main-hero-300.jpg',
+    'https://s3-us-west-1.amazonaws.com/ho-fec-similar/s1375682-main-hero-300.jpg',
+    'https://s3-us-west-1.amazonaws.com/ho-fec-similar/s1376086-main-hero-300.jpg',
+    'https://s3-us-west-1.amazonaws.com/ho-fec-similar/s1790039-main-hero-300.jpg',
+    'https://s3-us-west-1.amazonaws.com/ho-fec-similar/s1835420-main-hero-300.jpg',
+    'https://s3-us-west-1.amazonaws.com/ho-fec-similar/s1897461-main-hero-300.jpg',
+    'https://s3-us-west-1.amazonaws.com/ho-fec-similar/s1897487-main-hero-300.jpg',
+    'https://s3-us-west-1.amazonaws.com/ho-fec-similar/s1897495-main-hero-300.jpg',
+    'https://s3-us-west-1.amazonaws.com/ho-fec-similar/s1899103-main-hero-300.jpg',
+    'https://s3-us-west-1.amazonaws.com/ho-fec-similar/s1910413-main-hero-300.jpg',
+    'https://s3-us-west-1.amazonaws.com/ho-fec-similar/s1918697-main-hero-300.jpg',
+    'https://s3-us-west-1.amazonaws.com/ho-fec-similar/s2070860-main-hero-300.jpg',
+    'https://s3-us-west-1.amazonaws.com/ho-fec-similar/s2077477-main-hero-300.jpg',
+    'https://s3-us-west-1.amazonaws.com/ho-fec-similar/s407304-main-hero-300.jpg',
+    'https://s3-us-west-1.amazonaws.com/ho-fec-similar/s487694-main-hero-300.jpg'
+]
+
+module.exports = { articlesImage, exploresImage, youtubeVideo, youtubeThumbnail, month, productImg, productNames}
 

@@ -1,9 +1,10 @@
 import React from 'react';
-import styles from './mstyles.css'
-import sephoraAvatar from '../../../Assets/sephoraAvatar.svg';
+import styles from './mstyles.css';
 import HeartSVG from '../svgComponent/heart.jsx';
 import ShareSVG from '../svgComponent/share.jsx';
-import CloseModalSVG from '../svgComponent/closeModal.jsx'
+import CloseModalSVG from '../svgComponent/closeModal.jsx';
+import Carousel from '../carouselComponent/carousel.jsx';
+import InnerCarousel from './exploresModalCarousel/innerCarousel.jsx';
 
 class Modal extends React.Component {
 
@@ -82,6 +83,18 @@ class Modal extends React.Component {
               </div>
 
             </div>
+          </div>
+          <div className={styles.shopThisLookContainer}>
+            <div  className={styles.innerCarouselHeader} >Shop this look</div>
+            <Carousel 
+            lists={this.props.innerCarouselLists}
+            component={InnerCarousel}
+            listLength={this.props.innerCarouselLists.length}
+            itemDisplay={5}
+            compCarouselStyles={styles}
+            imageSize={-113}
+            translateStart={-25}
+            />
           </div>
         </section>
       </div>

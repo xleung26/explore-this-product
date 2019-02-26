@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import styles from './astyles.css'
 
 class Articles extends React.Component {

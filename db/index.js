@@ -82,8 +82,8 @@ function formatData(array) {
     }
 
     let videotracker = {}
-    for (let k = 0; k < Math.max(Math.floor(Math.random() * 9), 2); k++) {
-      let randomIndex = Math.floor(Math.random() * 10)
+    for (let k = 0; k < Math.max(Math.floor(Math.random() * 10), 2); k++) {
+      let randomIndex = Math.floor(Math.random() * 9)
       if ( !videotracker[youtubeVideo[randomIndex]] ) {
         videotracker[youtubeVideo[randomIndex]] = youtubeVideo[randomIndex];
         newObj.videos.push({ 
